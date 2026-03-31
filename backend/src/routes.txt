@@ -1,0 +1,30 @@
+############    API Testing in postman   ############
+
+✅ Register
+POST http://localhost:3000/api/auth/register
+{
+  "name": "Jay",
+  "email": "jay@gmail.com",
+  "password": "123456",
+  "role": "admin"
+}
+
+✅ Login
+
+POST http://localhost:3000/api/auth/login
+############  Request  ############
+{
+  "email": "jay@gmail.com",
+  "password": "123456"
+}
+############  Response  ############
+{
+  "success": true,
+  "token": "eyJhbGciOiJIUzI1NiIs...",
+  "user": {
+    "_id": "...",
+    "name": "Jay",
+    "email": "jay@gmail.com",
+    "role": "admin"
+  }
+}
