@@ -20,7 +20,7 @@ exports.registerUser = async (data) => {
     name,
     email,
     password: hashedPassword,
-    role,
+    role: 'user',
   });
 
   return user;
