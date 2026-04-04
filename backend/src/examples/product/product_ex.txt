@@ -1,0 +1,93 @@
+✅ Create Product (Admin Only)
+POST http://localhost:3000/api/products
+
+Authorization: Bearer YOUR_ADMIN_TOKEN
+############  Request  ############
+{
+  "title": "Gold Ring",
+  "price": 5000,
+  "description": "22k gold ring",
+  "image": "image_url_here"
+}
+############  Response  ############
+{
+  "success": true,
+  "data": {
+    "_id": "product_id",
+    "title": "Gold Ring",
+    "price": 5000,
+    "description": "22k gold ring",
+    "image": "image_url_here",
+    "createdAt": "...",
+    "updatedAt": "..."
+  }
+}
+
+✅ Get All Products (Public)
+GET http://localhost:3000/api/products?page=1&limit=10
+
+############  Response  ############
+{
+  "success": true,
+  "products": [
+    {
+      "_id": "product_id",
+      "title": "Gold Ring",
+      "price": 5000
+    }
+  ],
+  "total": 1,
+  "page": 1,
+  "pages": 1
+}
+
+✅ Get Single Product
+GET http://localhost:3000/api/products/:id
+
+############  Response  ############
+{
+  "success": true,
+  "data": {
+    "_id": "product_id",
+    "title": "Gold Ring",
+    "price": 5000,
+    "description": "22k gold ring"
+  }
+}
+
+✅ Update Product (Admin Only)
+69d0ecdd75c3b5c1c4f5fa14
+PUT http://localhost:3000/api/products/update
+Authorization: Bearer YOUR_ADMIN_TOKEN
+
+############  Request  ############
+{
+  "id": "65f1abc123456",
+  "title": "Updated Gold Ring",
+  "price": 7000
+}
+
+############  Response  ############
+{
+  "success": true,
+  "data": {
+    "_id": "product_id",
+    "title": "Updated Gold Ring",
+    "price": 5500
+  }
+}
+
+✅ Delete Product (Admin Only)
+DELETE http://localhost:3000/api/products/deleteProduct
+Authorization: Bearer YOUR_ADMIN_TOKEN
+
+############  Response  ############
+{
+  "id" :
+}
+
+############  Response  ############
+{
+  "success": true,
+  "message": "Product deleted"
+}
