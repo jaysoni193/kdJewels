@@ -1,5 +1,7 @@
 ✅ Create Product (Admin Only)
-POST http://localhost:3000/api/products
+POST http://localhost:3000/api/products/createProduct
+
+Token :- eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY5Y2Y1MTAxNmMxYTQzOTdjNTMyNWFmNCIsInJvbGUiOiJhZG1pbiIsImlhdCI6MTc3NTQ2MDY0NiwiZXhwIjoxNzc2MDY1NDQ2fQ.LFP_NR_bORdAJzatu2Ah44zoa_UbpIYKZ6VqohZgeN8
 
 Authorization: Bearer YOUR_ADMIN_TOKEN
 ############  Request  ############
@@ -24,7 +26,7 @@ Authorization: Bearer YOUR_ADMIN_TOKEN
 }
 
 ✅ Get All Products (Public)
-GET http://localhost:3000/api/products?page=1&limit=10
+GET http://localhost:3000/api/products/getAllProducts
 
 ############  Response  ############
 {
@@ -42,7 +44,7 @@ GET http://localhost:3000/api/products?page=1&limit=10
 }
 
 ✅ Get Single Product
-GET http://localhost:3000/api/products/:id
+GET http://localhost:3000/api/products/getAllProducts/:id
 
 ############  Response  ############
 {
@@ -57,7 +59,8 @@ GET http://localhost:3000/api/products/:id
 
 ✅ Update Product (Admin Only)
 69d0ecdd75c3b5c1c4f5fa14
-PUT http://localhost:3000/api/products/update
+PUT http://localhost:3000/api/products/updateProduct
+
 Authorization: Bearer YOUR_ADMIN_TOKEN
 
 ############  Request  ############
@@ -83,7 +86,7 @@ Authorization: Bearer YOUR_ADMIN_TOKEN
 
 ############  Response  ############
 {
-  "id" :
+  "id" : "69d362fa6f13d2a8fb8f1d9d"
 }
 
 ############  Response  ############
@@ -91,3 +94,17 @@ Authorization: Bearer YOUR_ADMIN_TOKEN
   "success": true,
   "message": "Product deleted"
 }
+
+PUT http://localhost:3000/api/products/softDelete
+{
+  "id" : "69d362fa6f13d2a8fb8f1d9d"
+}
+PUT http://localhost:3000/api/products/restore
+{
+  "id" : "69d362fa6f13d2a8fb8f1d9d"
+}
+PUT http://localhost:3000/api/products/permanentDelete
+{
+  "id" : "69d362fa6f13d2a8fb8f1d9d"
+}
+

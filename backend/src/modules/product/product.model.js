@@ -13,8 +13,27 @@ const productSchema = new mongoose.Schema({
   description: {
     type: String,
   },
-  image: {
-    type: String,
+  images: [
+    {
+      url: String,
+      public_id: String,
+    }
+  ],
+
+  isVisible: {
+    type: Boolean,
+    default: true,
+  },
+
+  // ✅ SOFT DELETE FIELD
+  isDeleted: {
+    type: Boolean,
+    default: false,
+  },
+
+  deletedAt: {
+    type: Date,
+    default: null,
   },
 
 },

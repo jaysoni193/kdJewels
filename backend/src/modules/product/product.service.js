@@ -21,22 +21,7 @@ exports.getProducts = async (query) => {
   return {
     products,
     total,
-    page,
+    page: Number(page),
     pages: Math.ceil(total / limit),
   };
-};
-//Get single product by id
-
-exports.getProductById = async (id) => {
-  return await Product.findById(id);
-};
-
-//Update product by id
-exports.updateProduct = async (id, updateData) => {
-  return await Product.findByIdAndUpdate(id, updateData, { new: true });
-};
-
-//Delete product by id    
-exports.deleteProduct = async (id) => {
-  return await Product.findByIdAndDelete(id);
-};    
+}
