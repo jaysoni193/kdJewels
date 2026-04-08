@@ -129,6 +129,7 @@ exports.updateProduct = async (req, res) => {
 
     res.json({
       success: true,
+      message: "Product updated successfully",
       data: updatedProduct,
     });
 
