@@ -1,0 +1,40 @@
+POST /api/categories/createCategory
+
+{
+  "name": "Rings"
+}
+
+POST /api/products
+
+{
+  "title": "Gold Ring",
+  "price": 5000,
+  "category": "CATEGORY_ID_HERE"
+}
+
+POST /api/products/filter
+
+{
+  "categoryId": "69d63ff418f2fb4ace9d0fc2"
+}
+
+{
+  "products": [
+    {
+      "title": "Gold Ring",
+      "price": 5000,
+      "category": {
+        "_id": "123",
+        "name": "Rings"
+      }
+    }
+  ]
+}
+
+PUT /api/categories/updateCategory/:id
+
+{
+  "name": "Necklaces"
+}
+
+DELETE /api/categories/deleteCategory/:id

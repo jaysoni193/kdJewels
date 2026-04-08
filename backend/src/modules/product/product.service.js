@@ -1,4 +1,5 @@
 const Product = require('./product.model');
+const mongoose = require('mongoose');
 
 //CREATE
 exports.createProduct = async (productData) => {
@@ -97,11 +98,17 @@ exports.filterProducts = async (body = {}, user = {}) => {
     filter.isVisible = isVisible;
   }
 
+
   // 🔐 USER CONTROL
   if (!user || user.role !== 'admin') {
     filter.isVisible = true;
     filter.isDeleted = false;
   }
+
+  if (body.categoryId && mongoose.Types.ObjectId.isValid(body.categoryId)) {
+    filter.categoryId = new mongoose.Types.ObjectId(body.categoryId);
+  }
+
 
   // 🔽 SORT
   let sort = { createdAt: -1 };
@@ -109,8 +116,11 @@ exports.filterProducts = async (body = {}, user = {}) => {
   if (body.sortBy) {
     sort[body.sortBy] = body.order === 'asc' ? 1 : -1;
   }
+  console.log("CATEGORY ID =>", body.categoryId);
+  console.log("FILTER =>", filter);
 
   const products = await Product.find(filter)
+    .populate('categoryId', 'name')
     .sort(sort)
     .skip(skip)
     .limit(limit);

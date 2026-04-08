@@ -10,19 +10,25 @@ Authorization: Bearer YOUR_ADMIN_TOKEN
   "price": 5000,
   "description": "22k gold ring",
   "image": "image_url_here"
+  "categoryId": "CATEGORY_ID_HERE"
 }
 ############  Response  ############
 {
-  "success": true,
-  "data": {
-    "_id": "product_id",
-    "title": "Gold Ring",
-    "price": 5000,
-    "description": "22k gold ring",
-    "image": "image_url_here",
-    "createdAt": "...",
-    "updatedAt": "..."
-  }
+    "success": true,
+    "data": {
+        "title": "Silver Ring",
+        "price": 15000,
+        "description": "925 ring",
+        "categoryId": "69d63eb0ce91f588822bf9c3",
+        "images": [],
+        "isVisible": true,
+        "isDeleted": false,
+        "deletedAt": null,
+        "_id": "69d63ff418f2fb4ace9d0fc2",
+        "createdAt": "2026-04-08T11:45:56.303Z",
+        "updatedAt": "2026-04-08T11:45:56.303Z",
+        "__v": 0
+    }
 }
 
 ✅ Get All Products (Public)
