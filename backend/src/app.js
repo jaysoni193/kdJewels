@@ -12,8 +12,6 @@ app.use(express.json());
 app.use(cors());
 app.use(morgan('dev'));
 
-console.log("🔥 Server restarted 🔥");
-
 // Routes
 app.use('/api/auth', authRoutes);
 app.use('/api/products', productRoutes);

@@ -54,3 +54,12 @@ exports.deleteCategory = async (req, res) => {
     });
   }
 };
+
+exports.getCategoryTree = async (req, res) => {
+  const data = await service.getCategoryTree();
+
+  res.json({
+    success: true,
+    data,
+  });
+};

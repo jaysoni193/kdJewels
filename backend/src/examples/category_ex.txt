@@ -38,3 +38,20 @@ PUT /api/categories/updateCategory/:id
 }
 
 DELETE /api/categories/deleteCategory/:id
+
+//create sub categories
+
+
+Step:1
+http://localhost:3000/api/categories/createCategory
+{
+  "name":Necklaces,
+}
+Step:2
+http://localhost:3000/api/categories/createCategory
+{
+  "name":"Gold Necklaces",
+  "parent": "Necklaces_Id"
+}
+Step:3
+http://localhost:3000/api/categories/tree

@@ -105,8 +105,11 @@ exports.filterProducts = async (body = {}, user = {}) => {
     filter.isDeleted = false;
   }
 
-  if (body.categoryId && mongoose.Types.ObjectId.isValid(body.categoryId)) {
-    filter.categoryId = new mongoose.Types.ObjectId(body.categoryId);
+  // 🧩 MULTI CATEGORY FILTER
+  if (body.categoryIds && Array.isArray(body.categoryIds)) {
+    filter.categories = {
+      $in: body.categoryIds
+    };
   }
 
 
@@ -120,7 +123,7 @@ exports.filterProducts = async (body = {}, user = {}) => {
   console.log("FILTER =>", filter);
 
   const products = await Product.find(filter)
-    .populate('categoryId', 'name')
+    .populate('categories', 'name')
     .sort(sort)
     .skip(skip)
     .limit(limit);
