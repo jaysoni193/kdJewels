@@ -1,0 +1,87 @@
+1. CREATE BANNER(WITH IMAGE)
+POST http://localhost:3000/api/banners/createBanner
+
+2. UPDATE BANNER
+PUT http://localhost:3000/api/banners/updateBanner/:id
+
+3. GET ALL (ADMIN)
+GET http://localhost:3000/api/banners/getAllBanners
+
+4. GET ACTIVE (MOBILE APP)
+GET http://localhost:3000/api/banners/getActiveBanners
+
+{
+  "info": {
+    "name": "Banner API",
+    "_postman_id": "banner-api-123",
+    "description": "Banner APIs for upload and fetch",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "Create Banner",
+      "request": {
+        "method": "POST",
+        "body": {
+          "mode": "formdata",
+          "formdata": [
+            { "key": "image", "type": "file", "src": "" },
+            { "key": "title", "value": "Wedding Offer", "type": "text" },
+            { "key": "redirectType", "value": "category", "type": "text" },
+            { "key": "redirectId", "value": "CATEGORY_ID", "type": "text" },
+            { "key": "priority", "value": "10", "type": "text" }
+          ]
+        },
+        "url": {
+          "raw": "http://localhost:3000/api/banners",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "3000",
+          "path": ["api", "banners"]
+        }
+      }
+    },
+    {
+      "name": "Get Active Banners",
+      "request": {
+        "method": "GET",
+        "url": {
+          "raw": "http://localhost:3000/api/banners/active",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "3000",
+          "path": ["api", "banners", "active"]
+        }
+      }
+    },
+    {
+      "name": "Get All Banners (Admin)",
+      "request": {
+        "method": "GET",
+        "url": {
+          "raw": "http://localhost:3000/api/banners/admin",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "3000",
+          "path": ["api", "banners", "admin"]
+        }
+      }
+    }
+  ]
+}
+
+{
+  "title": "Gold Rings",
+  "type": "grid",
+  "redirectType": "category",
+  "redirectId": "RINGS_ID",
+  "prefetchData": {
+    "category": {
+      "name": "Rings"
+    },
+    "products": [
+      { "name": "Gold Ring 1", "price": 20000 },
+      { "name": "Gold Ring 2", "price": 25000 }
+    ]
+  }
+}
