@@ -3,7 +3,6 @@ description: "A new Flutter project."
 
 publish_to: 'none' 
 
-
 version: 1.0.0+1
 
 environment:
@@ -14,7 +13,6 @@ dependencies:
   flutter:
     sdk: flutter
 
-
   cupertino_icons: ^1.0.8
 
 dev_dependencies:
@@ -22,11 +20,14 @@ dev_dependencies:
     sdk: flutter
 
   flutter_lints: ^5.0.0
+
   carousel_slider: ^5.0.0
 
   #Api call
   dio: ^5.7.0
+
   flutter_rating_bar: ^4.0.1
+  
   #state management
   flutter_bloc: ^8.1.6
   bloc: ^8.1.4
