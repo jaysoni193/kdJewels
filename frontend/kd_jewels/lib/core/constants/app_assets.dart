@@ -18,6 +18,8 @@ class AppAssets {
   static const String temp = '${imgPath}temp.png';
 
   //Icon
+  static const String icNoInternet = '${iconPath}no_internet_icon.png';
+  static const String icNoData = '${iconPath}no_data_icon.png';
   static const String icBalance = '${iconPath}balance_icon.png';
   static const String icBuyBack = '${iconPath}buyBack_icon.png';
   static const String icCertifiedDiamonds = '${iconPath}certified_diamonds_icon.png';

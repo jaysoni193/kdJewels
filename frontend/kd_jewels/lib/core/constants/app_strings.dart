@@ -1,6 +1,11 @@
 class AppStrings {
   static const String kdJewels = "kdJewels";
 
+  ///Admin
+  static const String admin = "Admin";
+  static const String addProduct = "Add Product";
+  static const String editProduct = "Edit Product";
+
   ///Buttons
   static const String skip = "Skip";
   static const String next = "Next";

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:kd_jewels/core/utils/common_app_status_bar.dart';
 import '../../../../../../core/constants/app_colors.dart';
 import '../../../../home_screen/data/model/latest_product_model.dart';
 import '../../../data/model/care_tips_model.dart';
@@ -23,9 +24,15 @@ class _BlogPageState extends State<BlogPage> {
   }
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: AppColors.whiteColor,
-      body: blogBodyContent(context,latestProductCardList,careAndTipsList),
+    return SafeArea(
+      child: CommonAppStatusBar(
+        color: AppColors.primaryColor,
+        iconBrightness: Brightness.light,
+        child: Scaffold(
+          backgroundColor: AppColors.whiteColor,
+          body: blogBodyContent(context,latestProductCardList,careAndTipsList),
+        ),
+      ),
     );
   }
 }

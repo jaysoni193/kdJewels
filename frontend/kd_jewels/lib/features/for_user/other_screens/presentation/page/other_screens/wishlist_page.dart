@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:kd_jewels/core/utils/common_app_status_bar.dart';
 import '../../../../../../core/constants/app_colors.dart';
 import '../../../../../../core/constants/app_strings.dart';
 import '../../../../../../core/utils/common_app_bar.dart';
@@ -23,13 +24,19 @@ class _WishlistPageState extends State<WishlistPage> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: AppColors.whiteColor,
-      appBar: PreferredSize(
-        preferredSize: Size.fromHeight(50.0),
-        child: CommonAppBar(pageName: AppStrings.wishlist,isShowLogo: false,),
+    return SafeArea(
+      child: CommonAppStatusBar(
+        color: AppColors.primaryColor,
+        iconBrightness: Brightness.light,
+        child: Scaffold(
+          backgroundColor: AppColors.whiteColor,
+          appBar: PreferredSize(
+            preferredSize: Size.fromHeight(50.0),
+            child: CommonAppBar(pageName: AppStrings.wishlist, isShowLogo: false,),
+          ),
+          body: wishlistBodyContent(context, collectionDataList),
+        ),
       ),
-      body: wishlistBodyContent(context, collectionDataList),
     );
   }
 }

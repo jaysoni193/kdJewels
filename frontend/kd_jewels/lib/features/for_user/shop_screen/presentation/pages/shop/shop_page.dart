@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:kd_jewels/core/utils/common_app_status_bar.dart';
 import '../../../../../../core/constants/app_colors.dart';
 import '../../../../home_screen/data/model/img_text_model.dart';
 import '../../../../home_screen/data/model/latest_product_model.dart';
@@ -24,9 +25,15 @@ class _ShopPageState extends State<ShopPage> {
   }
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: AppColors.whiteColor,
-      body: shopBodyContent(context,productCategoryList,latestProductCardList,trendingProductList),
+    return SafeArea(
+      child: CommonAppStatusBar(
+        color: AppColors.primaryColor,
+        iconBrightness: Brightness.light,
+        child: Scaffold(
+          backgroundColor: AppColors.whiteColor,
+          body: shopBodyContent(context,productCategoryList,latestProductCardList,trendingProductList),
+        ),
+      ),
     );
   }
 }

@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_easyloading/flutter_easyloading.dart';
+import 'features/for_admin/admin_dashboard/presentation/page/admin_dashboard/admin_dashboard_page.dart';
 import 'features/splash_screen/presentation/page/splash/splash_page.dart';
 import 'core/constants/app_colors.dart';
 import 'package:no_screenshot/no_screenshot.dart';
@@ -73,7 +74,7 @@ class _MyAppState extends State<MyApp> {
           return MaterialApp(
             title: AppStrings.kdJewels,
             theme: AppTheme.lightTheme,
-            home: SplashPage(),
+            home: AdminDashboardPage(),
             builder: EasyLoading.init(),
             debugShowCheckedModeBanner: false,
           );

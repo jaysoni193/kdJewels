@@ -25,8 +25,6 @@ dev_dependencies:
 
   #Api call
   dio: ^5.7.0
-
-  flutter_rating_bar: ^4.0.1
   
   #state management
   flutter_bloc: ^8.1.6

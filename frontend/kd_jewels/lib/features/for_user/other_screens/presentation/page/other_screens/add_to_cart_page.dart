@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import '../../../../../../core/constants/app_colors.dart';
 import '../../../../../../core/constants/app_strings.dart';
 import '../../../../../../core/utils/common_app_bar.dart';
+import '../../../../../../core/utils/common_app_status_bar.dart';
 import '../../../../collection_screen/data/model/collection_data_model.dart';
 import '../widgets/add_to_cart_body_widget.dart';
 
@@ -24,13 +25,19 @@ class _AddToCartPageState extends State<AddToCartPage> {
   @override
   Widget build(BuildContext context) {
     double screenWidth = MediaQuery.of(context).size.width;
-    return Scaffold(
-      backgroundColor: AppColors.whiteColor,
-      appBar: PreferredSize(
-        preferredSize: Size.fromHeight(50.0),
-        child: CommonAppBar(pageName: AppStrings.myCart,isShowLogo: false,),
+    return SafeArea(
+      child: CommonAppStatusBar(
+        color: AppColors.primaryColor,
+        iconBrightness: Brightness.light,
+        child: Scaffold(
+          backgroundColor: AppColors.whiteColor,
+          appBar: PreferredSize(
+            preferredSize: Size.fromHeight(50.0),
+            child: CommonAppBar(pageName: AppStrings.myCart, isShowLogo: false,),
+          ),
+          body: addToCartBodyContent(context, screenWidth, collectionDataList),
+        ),
       ),
-      body: addToCartBodyContent(context,screenWidth, collectionDataList),
     );
   }
 }

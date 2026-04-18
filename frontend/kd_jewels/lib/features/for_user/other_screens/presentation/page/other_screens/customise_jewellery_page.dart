@@ -15,10 +15,10 @@ class _CustomiseJewelleryPageState extends State<CustomiseJewelleryPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-backgroundColor: AppColors.whiteColor,
+      backgroundColor: AppColors.whiteColor,
       appBar: PreferredSize(
         preferredSize: Size.fromHeight(50.0),
-        child: CommonAppBar(pageName: AppStrings.customiseJewellery,isShowLogo: false,),
+        child: CommonAppBar(pageName: AppStrings.customiseJewellery, isShowLogo: false,),
       ),
       body: customiseJewelleryBodyContent(context),
     );
