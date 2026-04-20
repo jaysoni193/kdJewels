@@ -1,18 +1,20 @@
 import 'package:flutter/material.dart';
+import 'package:kd_jewels/features/for_admin/add_products/presentation/page/add_category/widgets/add_category_body_content.dart';
 import '../../../../../../core/utils/common_app_status_bar.dart';
 import '../../../../../../core/utils/common_app_bar.dart';
 import '../../../../../../core/constants/app_colors.dart';
 import '../../../../../../core/constants/app_strings.dart';
-import 'widget/add_products_body_content.dart';
+import '../add_products/widget/add_products_body_content.dart';
 
-class AddProductsPage extends StatefulWidget {
-  const AddProductsPage({super.key});
+
+class AddCategoryPage extends StatefulWidget {
+  const AddCategoryPage({super.key});
 
   @override
-  State<AddProductsPage> createState() => _AddProductsPageState();
+  State<AddCategoryPage> createState() => _AddCategoryPageState();
 }
 
-class _AddProductsPageState extends State<AddProductsPage> {
+class _AddCategoryPageState extends State<AddCategoryPage> {
   @override
   Widget build(BuildContext context) {
     return SafeArea(
@@ -24,9 +26,9 @@ class _AddProductsPageState extends State<AddProductsPage> {
           extendBody: true,
           appBar: PreferredSize(
             preferredSize: Size.fromHeight(50.0),
-            child: CommonAppBar(pageName: AppStrings.addProduct, isShowLogo: false),
+            child: CommonAppBar(pageName: AppStrings.addCategory, isShowLogo: false),
           ),
-          body: const AddProductsBodyContent(),
+          body: const AddCategoryBodyContent(),
         ),
       ),
     );

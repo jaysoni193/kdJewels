@@ -43,6 +43,11 @@ dev_dependencies:
   # Json
   json_annotation: ^4.9.0
 
+  image_picker: ^1.2.1
+
+  dropdown_search: ^5.0.6
+
+
   # DI
   get_it: ^8.0.2
 

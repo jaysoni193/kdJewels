@@ -1,48 +1,35 @@
+import 'package:dio/dio.dart';
 import 'package:get_it/get_it.dart';
-import '../features/for_user/login_register_screen/data/repositories/login_register_repositories_impl.dart';
+import 'package:kd_jewels/features/for_user/login_register_screen/data/datasources/login_register_remote_datasource.dart';
+import 'package:kd_jewels/features/for_user/login_register_screen/data/repositories/login_register_repositories_impl.dart';
+import 'package:kd_jewels/features/for_user/login_register_screen/presentation/bloc/login_register_bloc/login_register_bloc.dart';
+import '../core/api/app_dio.dart';
 import '../features/for_user/login_register_screen/domain/repositories/login_register_repository.dart';
-import '../features/for_user/login_register_screen/presentation/bloc/login_register_bloc/login_register_bloc.dart';
-import '../core/utils/prefrence_manager.dart';
-import '../features/for_user/home_screen/data/datasources/home_remote_datasource.dart';
-import '../features/for_user/home_screen/data/repositories/home_repositories_impl.dart';
-import '../features/for_user/home_screen/domain/repositories/home_repository.dart';
-import '../features/for_user/home_screen/domain/useCases/home_useCase.dart';
-import '../features/for_user/home_screen/presentation/bloc/home_bloc/home_bloc.dart';
-import '../features/for_user/login_register_screen/data/datasources/login_register_remote_datasource.dart';
 import '../features/for_user/login_register_screen/domain/useCases/login_register_useCase.dart';
+import '../features/splash_screen/presentation/bloc/app_loader_bloc.dart';
 
 GetIt sl = GetIt.instance;
 
 class DependencyInjection {
-Future<void> init() async {
-/*    // Dio instance
-    sl.registerLazySingleton<Dio>(() => AppDio.getInstance());*/
+  Future<void> init() async {
+    // Dio instance
+    sl.registerLazySingleton<Dio>(() => AppDio.getInstance());
 
-//shared preferences
-// sl.registerLazySingleton<PreferenceManager>(() => PreferenceManager());
+    //shared preferences
+    // sl.registerLazySingleton<SecurePreferenceManager>(
+    //       () => SecurePreferenceManager(),
+    // );
 
-///Login
-sl.registerFactory(() =>LoginRegisterBloc(loginRegisterUseCase: sl()),);
+    //inject blocs
+    sl.registerFactory<AppLoaderBloc>(() => AppLoaderBloc());
+    sl.registerFactory<LoginRegisterBloc>(() => LoginRegisterBloc(loginRegisterUseCase: sl()));
 
-sl.registerLazySingleton<LoginRegisterUseCase>(() => LoginRegisterUseCase(loginRegisterRepository: sl()),);
+    //inject useCases
+    sl.registerLazySingleton<LoginRegisterUseCase>(() => LoginRegisterUseCase(loginRegisterRepository: sl()));
 
-sl.registerLazySingleton<LoginRegisterRepository>(() => LoginRegisterRepositoriesImpl(loginRegisterRemoteDatasource: sl()),);
-
-sl.registerLazySingleton(() => LoginRegisterRemoteDatasource(),);
-
-///Home
-sl.registerFactory<HomeBloc>(() => HomeBloc(homeUseCase: sl()));
-
-sl.registerLazySingleton<HomeUseCase>(
-() => HomeUseCase(homeRepository: sl()),
-);
-
-sl.registerLazySingleton<HomeRepository>(
-() => HomeRepositoriesImpl(homeRemoteDatasource: sl()),
-);
-
-sl.registerLazySingleton<HomeRemoteDatasource>(
-() => HomeRemoteDatasourceImpl(dio: sl()),
-);
-}
+    //inject repository
+    sl.registerLazySingleton<LoginRegisterRepository>(() => LoginRegisterRepositoriesImpl(loginRegisterRemoteDatasource: sl()));
+    // inject remote dataSources
+    sl.registerLazySingleton<LoginRegisterRemoteDatasource>(() => LoginRemoteDatasourceImpl(dio: sl()));
+  }
 }

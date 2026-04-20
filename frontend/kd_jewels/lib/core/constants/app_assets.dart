@@ -28,4 +28,8 @@ class AppAssets {
   static const String icTransparency = '${iconPath}transparency_icon.png';
   static const String icWhatsApp = '${iconPath}wp_icon.png';
   static const String icUser = '${iconPath}user_icon.png';
+  static const String icEdit = '${iconPath}edit_icon.png';
+  static const String icUploadImgIcon = '${iconPath}upload_img_icon.png';
+  static const String icDelete = '${iconPath}delete_icon.png';
+  static const String icLogout = '${iconPath}logout_icon.png';
 }

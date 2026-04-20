@@ -14,7 +14,6 @@ import '../../../../../../core/utils/custom_button.dart';
 import '../../../../../../core/constants/app_strings.dart';
 import '../../../../../../core/utils/custom_text_form_field.dart';
 import '../../../../../../core/utils/mobile_number_validator.dart';
-import '../login_register/otp_page.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class MobileEmailBodyWidget extends StatefulWidget {
@@ -44,16 +43,16 @@ class _MobileEmailBodyWidgetState extends State<MobileEmailBodyWidget> {
                     loginSignUpText(),
                     10.0.hSpace,
 
-                    ///Mobile No
-                    mobileNoTextField(),
-                    10.0.hSpace,
-
                     ///Email ID
                     emailIDTextField(),
                     25.0.hSpace,
 
+                    ///Password
+                    passwordTextField(),
+                    10.0.hSpace,
+
                     ///Button
-                    getOTPButton(context),
+                    signInButton(context),
                     8.0.hSpace,
 
                     signUpButton(context),
@@ -80,7 +79,7 @@ Widget loginSignUpText() {
   );
 }
 
-Widget mobileNoTextField() {
+Widget passwordTextField() {
   return CustomTextFormField(
     key: UniqueKey(),
     labelText: AppStrings.mobileNo,
@@ -125,7 +124,7 @@ Widget emailIDTextField() {
   );
 }
 
-Widget getOTPButton(BuildContext context) {
+/*Widget getOTPButton(BuildContext context) {
   return Row(
     mainAxisAlignment: MainAxisAlignment.center,
     children: [
@@ -134,6 +133,25 @@ Widget getOTPButton(BuildContext context) {
         onPressed: () {
           if (loginFormKey.currentState!.validate()) {
             context.pushScreen(OtpPage());
+          }
+        },
+        color: AppColors.primaryColor,
+        textColor: AppColors.whiteColor,
+        borderRadius: 5.0,
+      ),
+    ],
+  );
+}*/
+
+Widget signInButton(BuildContext context) {
+  return Row(
+    mainAxisAlignment: MainAxisAlignment.center,
+    children: [
+      CustomButton(
+        text: AppStrings.signIn,
+        onPressed: () {
+          if (loginFormKey.currentState!.validate()) {
+
           }
         },
         color: AppColors.primaryColor,

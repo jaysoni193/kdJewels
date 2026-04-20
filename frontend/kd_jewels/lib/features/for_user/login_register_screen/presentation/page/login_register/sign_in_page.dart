@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import '../login_register_widgets/sign_in_app_bar_widget.dart';
 import '../../../../../../core/constants/app_colors.dart';
-import '../login_register_widgets/mobile_email_body_widget.dart';
+import '../login_register_widgets/email_password_body_widget.dart';
 
 class SignInPage extends StatefulWidget {
   const SignInPage({super.key});

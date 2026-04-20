@@ -5,12 +5,28 @@ class AppStrings {
   static const String admin = "Admin";
   static const String addProduct = "Add Product";
   static const String editProduct = "Edit Product";
+  static const String deleteProduct = "Delete Product";
+  static const String addCategory = "Add Category";
+  static const String editCategory = "Edit Category";
+  static const String deleteCategory = "Delete Category";
+  static const String lblProductCategory = "Product Category";
+  static const String lblProductDescription = "Product Description";
 
+  ///Massage
+  static const String noDataFound = "No Data Found";
+  static const String noInternet = "No Internet";
+  static const String deleteAccountString = "Do you want to Delete Account ?";
+  static const String logoutText = "Are you sure you want to logout ?";
   ///Buttons
   static const String skip = "Skip";
   static const String next = "Next";
+  static const String cancel = "Cancel";
+  static const String okay = "Okay";
+  static const String yes = "Yes";
+  static const String no = "No";
   static const String getStarted = "Get Started";
   static const String signUP = "SIGN UP";
+  static const String signIn = "SIGN IN";
   static const String resendOtp = "Resend OTP";
   static const String getOtp = "GET OTP";
   static const String submit = "Submit";

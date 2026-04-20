@@ -3,7 +3,7 @@ import '../../../../../../core/constants/app_colors.dart';
 import '../../../../../../core/utils/app_utils.dart';
 import '../../../../../../core/utils/custom_button.dart';
 import '../../../../../../core/constants/app_strings.dart';
-import '../../../../../../core/utils/custom_dropdown_menu.dart';
+import '../../../../../../core/utils/custom_drop_down.dart';
 import '../../../../../../core/extensions/widget_size_extension.dart';
 
 enum ColorLabel { green, red, blue }
@@ -32,88 +32,32 @@ Widget customiseJewelleryBodyContent(BuildContext context) {
         vertical: AppUtils.appPadding,
       ),
       child: Column(
+        spacing: AppUtils.appPadding,
         children: [
-          10.0.hSpace,
-          CustomDropdownMenu<ColorLabel>(
-            labelText: AppStrings.next,
-            initialSelection: ColorLabel.green,
-            onSelected: (p0) {},
-            label: '',
-            items: ColorLabel.values,
+          CustomDropdown(
+            items: ["test"],
+            validator: (value) {
+              return null;
+            },
+            onChanged: (value) {},
+            label: AppStrings.lblProductCategory,
           ),
-          10.0.hSpace,
-          CustomDropdownMenu<ColorLabel>(
-            labelText: AppStrings.next,
-            initialSelection: ColorLabel.green,
-            onSelected: (p0) {},
-            label: '',
-            items: ColorLabel.values,
+          CustomDropdown(
+            items: ["test"],
+            validator: (value) {
+              return null;
+            },
+            onChanged: (value) {},
+            label: AppStrings.lblProductCategory,
           ),
-          10.0.hSpace,
-          CustomDropdownMenu<ColorLabel>(
-            labelText: AppStrings.next,
-            initialSelection: ColorLabel.green,
-            onSelected: (p0) {},
-            label: '',
-            items: ColorLabel.values,
+          CustomDropdown(
+            items: ["test"],
+            validator: (value) {
+              return null;
+            },
+            onChanged: (value) {},
+            label: AppStrings.lblProductCategory,
           ),
-          10.0.hSpace,
-          CustomDropdownMenu<ColorLabel>(
-            labelText: AppStrings.next,
-            initialSelection: ColorLabel.green,
-            onSelected: (p0) {},
-            label: '',
-            items: ColorLabel.values,
-          ),
-          10.0.hSpace,
-          CustomDropdownMenu<ColorLabel>(
-            labelText: AppStrings.next,
-            initialSelection: ColorLabel.green,
-            onSelected: (p0) {},
-            label: '',
-            items: ColorLabel.values,
-          ),
-          10.0.hSpace,
-          CustomDropdownMenu<ColorLabel>(
-            labelText: AppStrings.next,
-            initialSelection: ColorLabel.green,
-            onSelected: (p0) {},
-            label: '',
-            items: ColorLabel.values,
-          ),
-          10.0.hSpace,
-          CustomDropdownMenu<ColorLabel>(
-            labelText: AppStrings.next,
-            initialSelection: ColorLabel.green,
-            onSelected: (p0) {},
-            label: '',
-            items: ColorLabel.values,
-          ),
-          10.0.hSpace,
-          CustomDropdownMenu<ColorLabel>(
-            labelText: AppStrings.next,
-            initialSelection: ColorLabel.green,
-            onSelected: (p0) {},
-            label: '',
-            items: ColorLabel.values,
-          ),
-          10.0.hSpace,
-          CustomDropdownMenu<ColorLabel>(
-            labelText: AppStrings.next,
-            initialSelection: ColorLabel.green,
-            onSelected: (p0) {},
-            label: '',
-            items: ColorLabel.values,
-          ),
-          10.0.hSpace,
-          CustomDropdownMenu<ColorLabel>(
-            labelText: AppStrings.next,
-            initialSelection: ColorLabel.green,
-            onSelected: (p0) {},
-            label: '',
-            items: ColorLabel.values,
-          ),
-          20.0.hSpace,
           Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [

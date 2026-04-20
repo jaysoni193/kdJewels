@@ -39,7 +39,6 @@ Future<void> showCommonBottomSheet({
   required Widget headerChild,
   required Widget middleChild,
   required Widget bottomChild,
-  required double heightFactor,
 }) {
   return showModalBottomSheet(
     context: context,

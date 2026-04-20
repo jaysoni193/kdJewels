@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
-import '../../../../../../core/constants/app_colors.dart';
+import 'package:kd_jewels/core/utils/custom_dialog_box.dart';
+import '../../../../../../../core/constants/app_colors.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+
+import '../../../../../../../core/constants/app_text_styles.dart';
 import 'edit_product_bottom_sheet.dart';
 
 class ProductList extends StatelessWidget {
@@ -20,23 +23,22 @@ class ProductList extends StatelessWidget {
         children: [
           // Product Image
           Container(
-            height: 60.h,
-            width: 60.w,
+            height: 80.h,
+            width: 80.w,
             decoration: BoxDecoration(color: Colors.grey[200], borderRadius: BorderRadius.circular(8)),
             child: const Icon(Icons.image, size: 30),
           ),
 
-          const SizedBox(width: 10),
+          const SizedBox(width: 25),
 
           // Product Details
           Expanded(
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
-              children: const [
-                Text('Test', style: TextStyle(fontWeight: FontWeight.bold)),
-                SizedBox(height: 4),
-                Text('2000'),
-                Text('Stock: 10'),
+              children: [
+                Text('Test', style: AppTextStyles.semiBold.copyWith(fontSize: 16.sp)),
+                Text('2000', style: AppTextStyles.medium),
+                Text('Stock: 10', style: AppTextStyles.medium),
               ],
             ),
           ),
@@ -47,12 +49,14 @@ class ProductList extends StatelessWidget {
               IconButton(
                 icon: Icon(Icons.edit, color: AppColors.black, size: 20.0.sp),
                 onPressed: () {
-                  editProductBottomSheet(context);
+                  editProductBottomSheet(context,false);
                 },
               ),
               IconButton(
                 icon: Icon(Icons.delete, color: AppColors.red, size: 20.0.sp),
-                onPressed: () {},
+                onPressed: () {
+                  CustomDialogBox.showDeleteAccountDialog(context, okBtn: () {}, cancelBtn: () {});
+                },
               ),
             ],
           ),
