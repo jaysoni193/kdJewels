@@ -15,7 +15,7 @@ class AppAssets {
   static const String card_3 = '${imgPath}img_3.png';
   static const String img_1 = '${imgPath}img_4.png';
   static const String img_2 = '${imgPath}img_5.png';
-  static const String temp = '${imgPath}temp.png';
+  static const String temp = '${imgPath}temp.jpg';
 
   //Icon
   static const String icNoInternet = '${iconPath}no_internet_icon.png';

@@ -5,5 +5,5 @@ class ApiHelpers {
   static const String apiKey = '';
 
   //Authentication
-  static const String signIn = 'Account_Mobile/EmployeeLogin';
+  static const String signIn = 'auth/login';
 }

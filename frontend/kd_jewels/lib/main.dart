@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_easyloading/flutter_easyloading.dart';
+import 'features/for_user/login_register_screen/presentation/bloc/login_register_bloc/login_register_bloc.dart';
+import 'features/splash_screen/presentation/bloc/app_loader_bloc.dart';
 import 'features/splash_screen/presentation/page/splash/splash_page.dart';
 import 'core/constants/app_colors.dart';
 import 'package:no_screenshot/no_screenshot.dart';
@@ -66,7 +68,8 @@ class _MyAppState extends State<MyApp> {
   Widget build(BuildContext context) {
     return MultiBlocProvider(
       providers: [
-        BlocProvider<HomeBloc>(create: (_) => HomeBloc(homeUseCase: sl())),
+        BlocProvider<AppLoaderBloc>(create: (_) => AppLoaderBloc()),
+        BlocProvider<LoginRegisterBloc>(create: (_) => LoginRegisterBloc(loginRegisterUseCase: sl())),
       ],
       child: Sizer(
         builder: (context, orientation, deviceType) {

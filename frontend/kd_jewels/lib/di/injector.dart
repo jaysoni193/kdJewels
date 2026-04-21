@@ -29,6 +29,7 @@ class DependencyInjection {
 
     //inject repository
     sl.registerLazySingleton<LoginRegisterRepository>(() => LoginRegisterRepositoriesImpl(loginRegisterRemoteDatasource: sl()));
+
     // inject remote dataSources
     sl.registerLazySingleton<LoginRegisterRemoteDatasource>(() => LoginRemoteDatasourceImpl(dio: sl()));
   }

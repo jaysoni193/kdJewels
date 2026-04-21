@@ -1,8 +1,9 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:kd_jewels/core/constants/app_assets.dart';
-import 'package:kd_jewels/core/utils/custom_divider.dart';
+import '../../../../../../core/constants/app_assets.dart';
+import '../../../../../../core/utils/custom_divider.dart';
+import '../../bloc/login_register_bloc/login_register_bloc.dart';
 import '../../../../../../core/extensions/navigation_extension.dart';
 import '../../../../../../core/extensions/widget_size_extension.dart';
 import '../login_register/register_page.dart';
@@ -13,21 +14,13 @@ import '../../../../../../core/utils/app_utils.dart';
 import '../../../../../../core/utils/custom_button.dart';
 import '../../../../../../core/constants/app_strings.dart';
 import '../../../../../../core/utils/custom_text_form_field.dart';
-import '../../../../../../core/utils/mobile_number_validator.dart';
-import '../login_register/otp_page.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-class SignInBodyWidget extends StatefulWidget {
-  const SignInBodyWidget({super.key});
+class SignInBodyWidget extends StatelessWidget {
+  final LoginRegisterBloc? loginRegisterBloc;
 
-  @override
-  State<SignInBodyWidget> createState() => _SignInBodyWidgetState();
-}
+  const SignInBodyWidget({super.key, this.loginRegisterBloc});
 
-final email = TextEditingController();
-final loginFormKey = GlobalKey<FormState>();
-
-class _SignInBodyWidgetState extends State<SignInBodyWidget> {
   @override
   Widget build(BuildContext context) {
     return SingleChildScrollView(
@@ -38,29 +31,71 @@ class _SignInBodyWidgetState extends State<SignInBodyWidget> {
             Padding(
               padding: EdgeInsets.all(AppUtils.appPadding),
               child: Form(
-                key: loginFormKey,
+                key: loginRegisterBloc?.loginFormKey,
                 child: Column(
                   children: [
                     loginSignUpText(),
                     10.0.hSpace,
 
-                    ///Mobile No
-                    mobileNoTextField(),
-                    10.0.hSpace,
-
                     ///Email ID
-                    emailIDTextField(),
+                    CustomTextFormField(
+                      key: UniqueKey(),
+                      labelText: AppStrings.emailID,
+                      inputFormatters: [LengthLimitingTextInputFormatter(40)],
+                      hintText: AppStrings.emailIDHintText,
+                      obscureText: false,
+                      keyboardType: TextInputType.text,
+                      controller: loginRegisterBloc!.email,
+                      validator: (value) => EmailValidator.validate(value),
+                    ),
                     25.0.hSpace,
 
-                    ///Button
-                    getOTPButton(context),
+                    ///Password
+                    CustomTextFormField(
+                      key: UniqueKey(),
+                      labelText: AppStrings.passwordHintText,
+                      inputFormatters: [LengthLimitingTextInputFormatter(30)],
+                      hintText: AppStrings.passwordHintText,
+                      obscureText: false,
+                      keyboardType: TextInputType.text,
+                      controller: loginRegisterBloc!.password,
+                      validator: (value) {
+                        //   //Todo (Validation for Mobile no)
+                      },
+                    ),
+                    10.0.hSpace,
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        CustomButton(
+                          text: AppStrings.signIn,
+                          onPressed: () {
+                            if (loginRegisterBloc!.loginFormKey.currentState!.validate()) {
+                              loginRegisterBloc!.add(LogInEvent(loginRegisterBloc!.email.text, loginRegisterBloc!.password.text));
+                            }
+                          },
+                          color: AppColors.primaryColor,
+                          textColor: AppColors.whiteColor,
+                          borderRadius: 5.0,
+                        ),
+                      ],
+                    ),
+
                     8.0.hSpace,
 
-                    signUpButton(context),
+                    CustomDivider(
+                      isShowImage: false,
+                      isShowButtonText: true,
+                      text: AppStrings.signUpText,
+                      buttonText: AppStrings.signUP,
+                      onPressed: () {
+                        context.pushScreen(RegisterPage());
+                      },
+                    ),
                   ],
                 ),
               ),
-            )
+            ),
           ],
         ),
       ),
@@ -75,70 +110,6 @@ Widget loginSignUpText() {
       Text(
         AppStrings.loginSignUP,
         style: AppTextStyles.medium.copyWith(color: AppColors.primaryColor, fontSize: 16.sp),
-      ),
-    ],
-  );
-}
-
-Widget mobileNoTextField() {
-  return CustomTextFormField(
-    key: UniqueKey(),
-    labelText: AppStrings.mobileNo,
-    inputFormatters: [
-      LengthLimitingTextInputFormatter(10),
-      FilteringTextInputFormatter.digitsOnly,
-      MobileNumberValidator(),
-    ],
-    hintText: AppStrings.mobileNoHintText,
-    obscureText: false,
-    keyboardType: TextInputType.phone,
-    controller: TextEditingController(),
-    validator: (value) {
-      //   //Todo (Validation for Mobile no)
-      if (value!.isEmpty) {
-        return 'Please enter a mobile number.';
-      }
-      if (!RegExp(r"^[6789]").hasMatch(value)) {
-        return 'Mobile number must start with 6, 7, 8, or 9.';
-      }
-      if (value.length != 10) {
-        return 'Mobile number must be 10 digits long.';
-      } else {
-        return null;
-      }
-    },
-  );
-}
-
-Widget emailIDTextField() {
-  return CustomTextFormField(
-    key: UniqueKey(),
-    labelText: AppStrings.emailID,
-    inputFormatters: [
-      LengthLimitingTextInputFormatter(40),
-    ],
-    hintText: AppStrings.emailIDHintText,
-    obscureText: false,
-    keyboardType: TextInputType.text,
-    controller: TextEditingController(),
-    validator: (value) => EmailValidator.validate(value),
-  );
-}
-
-Widget getOTPButton(BuildContext context) {
-  return Row(
-    mainAxisAlignment: MainAxisAlignment.center,
-    children: [
-      CustomButton(
-        text: AppStrings.getOtp,
-        onPressed: () {
-          if (loginFormKey.currentState!.validate()) {
-            context.pushScreen(OtpPage());
-          }
-        },
-        color: AppColors.primaryColor,
-        textColor: AppColors.whiteColor,
-        borderRadius: 5.0,
       ),
     ],
   );

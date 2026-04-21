@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
+import '../../../../login_register_screen/presentation/page/login_register/sign_in_page.dart';
 import '../../../../../../core/extensions/navigation_extension.dart';
 import '../../../../../../core/constants/app_strings.dart';
 import '../../../../../../core/utils/custom_button.dart';
 import '../../../../../../core/constants/app_colors.dart';
 import '../../../../../../core/constants/app_text_styles.dart';
-import '../../../../login_register_screen/presentation/page/login_register/mobile_email_page.dart';
 import 'top_convex_clipper.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -26,25 +26,19 @@ class OnboardingPageView extends StatelessWidget {
       body: Stack(
         children: [
           Positioned.fill(
-              top:0,
-              bottom: size.height*0.3,
-              right: 0,
-              left: 0,
-              child: Image.asset(
-            image,
-            fit: BoxFit.cover,
-          )),
+            top: 0,
+            bottom: size.height * 0.3,
+            right: 0,
+            left: 0,
+            child: Image.asset(image, fit: BoxFit.cover),
+          ),
           Positioned(
             top: size.height * 0.5,
             child: Column(
               children: [
                 ClipPath(
                   clipper: TopConvexClipper(),
-                  child: Container(
-                    height: size.height * 0.5,
-                    width: size.width,
-                    color: AppColors.secondPrimaryColor,
-                  ),
+                  child: Container(height: size.height * 0.5, width: size.width, color: AppColors.secondPrimaryColor),
                 ),
               ],
             ),
@@ -57,10 +51,7 @@ class OnboardingPageView extends StatelessWidget {
             child: Text(
               text,
               textAlign: TextAlign.center,
-              style: AppTextStyles.medium.copyWith(
-                color: AppColors.primaryColor,
-                fontSize: 18.0.sp,
-              ),
+              style: AppTextStyles.medium.copyWith(color: AppColors.primaryColor, fontSize: 18.0.sp),
             ),
           ),
 
@@ -118,7 +109,7 @@ class OnboardingPageView extends StatelessWidget {
                     borderRadius: 5.0,
                     paddingVertical: 8,
                     paddingHorizontal: 50,
-                  )
+                  ),
                 ],
               ),
             ),
@@ -129,6 +120,6 @@ class OnboardingPageView extends StatelessWidget {
   }
 
   void openLoginScreen(BuildContext context) {
-    context.pushScreen(MobileEmailPage());
+    context.pushScreen(SignInPage());
   }
 }
