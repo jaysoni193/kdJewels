@@ -14,9 +14,9 @@ class DashboardCardWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       decoration: BoxDecoration(
-        color: AppColors.whiteColor,
+        color: AppColors.grey.withValues(alpha: 0.1),
         borderRadius: BorderRadius.circular(16),
-        boxShadow: [BoxShadow(color: Colors.black.withValues(alpha: 0.03), blurRadius: 6, offset: const Offset(0, 3))],
+        boxShadow: [BoxShadow(color: Colors.grey.withValues(alpha: 0.05), blurRadius: 6, offset: const Offset(0, 3))],
       ),
       child: Padding(
         padding: const EdgeInsets.all(8.0),

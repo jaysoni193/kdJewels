@@ -5,6 +5,7 @@ import '../../../../../../../core/constants/app_text_styles.dart';
 import '../../../../../../../core/utils/common_bottom_sheet.dart';
 import '../../../../../../../core/utils/custom_button.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import '../../../../../admin_dashboard/presentation/page/widgets/action_button_widget.dart';
 import 'product_form.dart';
 
 editProductBottomSheet(BuildContext context,bool isFromAdd) {
@@ -13,7 +14,7 @@ editProductBottomSheet(BuildContext context,bool isFromAdd) {
     headerChild: Center(
       child: Text(
         isFromAdd ? AppStrings.addProduct:AppStrings.editProduct,
-        style: AppTextStyles.semiBold.copyWith(fontSize: 18.sp, color: AppColors.primaryColor),
+        style: AppTextStyles.semiBold.copyWith(fontSize: 18.sp, color: AppColors.black),
       ),
     ),
     middleChild: StatefulBuilder(
@@ -25,7 +26,7 @@ editProductBottomSheet(BuildContext context,bool isFromAdd) {
       crossAxisAlignment: CrossAxisAlignment.center,
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            CustomButton(text: AppStrings.submit, onPressed: () {}, color: AppColors.primaryColor, textColor: AppColors.whiteColor),
+            CustomButton(text: AppStrings.submit, onPressed: () {}, color: AppColors.black, textColor: AppColors.whiteColor,),
           ],
         ),
   )/*.whenComplete(() {

@@ -3,6 +3,7 @@ class AppStrings {
 
   ///Admin
   static const String admin = "Admin";
+  static const String viewOrders = "View Orders";
   static const String addProduct = "Add Product";
   static const String editProduct = "Edit Product";
   static const String deleteProduct = "Delete Product";
@@ -11,6 +12,10 @@ class AppStrings {
   static const String deleteCategory = "Delete Category";
   static const String lblProductCategory = "Product Category";
   static const String lblProductDescription = "Product Description";
+  static const String lblProducts = "Products";
+  static const String lblOrders = "Orders";
+  static const String lblUsers = "Users";
+  static const String lblRevenue = "Revenue";
 
   ///Massage
   static const String noDataFound = "No Data Found";

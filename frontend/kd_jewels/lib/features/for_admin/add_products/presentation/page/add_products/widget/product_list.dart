@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:kd_jewels/core/extensions/widget_size_extension.dart';
 import 'package:kd_jewels/core/utils/custom_dialog_box.dart';
 import '../../../../../../../core/constants/app_colors.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -12,24 +13,25 @@ class ProductList extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      margin: const EdgeInsets.only(bottom: 10),
+      margin: const EdgeInsets.only(top: 10),
       padding: const EdgeInsets.all(10),
       decoration: BoxDecoration(
-        color: AppColors.grey.withValues(alpha: 0.2),
+        color: AppColors.whiteColor.withValues(alpha: 0.2),
         borderRadius: BorderRadius.circular(12),
-        boxShadow: [BoxShadow(color: Colors.black.withValues(alpha: 0.05), blurRadius: 5, offset: const Offset(0, 2))],
+        border: Border.all(color: AppColors.grey.withValues(alpha: 0.3)),
+        boxShadow: [BoxShadow(color: AppColors.secondPrimaryColor)],
       ),
       child: Row(
         children: [
           // Product Image
           Container(
-            height: 80.h,
-            width: 80.w,
-            decoration: BoxDecoration(color: Colors.grey[200], borderRadius: BorderRadius.circular(8)),
-            child: const Icon(Icons.image, size: 30),
+            height: 90.h,
+            width: 90.w,
+            decoration: BoxDecoration(color: AppColors.grey.withValues(alpha: 0.3), borderRadius: BorderRadius.circular(8)),
+            child: Icon(Icons.image, size: 50.sp),
           ),
 
-          const SizedBox(width: 25),
+          25.0.wSpace,
 
           // Product Details
           Expanded(
@@ -37,7 +39,7 @@ class ProductList extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text('Test', style: AppTextStyles.semiBold.copyWith(fontSize: 16.sp)),
-                Text('2000', style: AppTextStyles.medium),
+                Text('Rs. 2000', style: AppTextStyles.medium),
                 Text('Stock: 10', style: AppTextStyles.medium),
               ],
             ),
@@ -49,7 +51,7 @@ class ProductList extends StatelessWidget {
               IconButton(
                 icon: Icon(Icons.edit, color: AppColors.black, size: 20.0.sp),
                 onPressed: () {
-                  editProductBottomSheet(context,false);
+                  editProductBottomSheet(context, false);
                 },
               ),
               IconButton(

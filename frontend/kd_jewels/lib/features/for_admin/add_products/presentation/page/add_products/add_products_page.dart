@@ -24,7 +24,7 @@ class _AddProductsPageState extends State<AddProductsPage> {
           extendBody: true,
           appBar: PreferredSize(
             preferredSize: Size.fromHeight(50.0),
-            child: CommonAppBar(pageName: AppStrings.addProduct, isShowLogo: false),
+            child: CommonAppBar(pageName: AppStrings.addProduct, isShowLogo: false, textColor: AppColors.black),
           ),
           body: const AddProductsBodyContent(),
         ),

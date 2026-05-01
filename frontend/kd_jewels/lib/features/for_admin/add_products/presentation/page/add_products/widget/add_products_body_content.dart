@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import '../../../../../../../core/extensions/navigation_extension.dart';
+import '../../../../../admin_dashboard/presentation/page/widgets/action_button_widget.dart';
+import '../../../../../admin_dashboard/presentation/page/widgets/subtle_background.dart';
 import '../../add_category/add_category_page.dart';
 import '../../../../../../../core/constants/app_colors.dart';
 import '../../../../../../../core/constants/app_strings.dart';
@@ -12,11 +14,12 @@ class AddProductsBodyContent extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.all(15.0),
-      child: Stack(
-        children: [
-          Column(
+    return Stack(
+      children: [
+        SubtleBackground(),
+        Padding(
+          padding: const EdgeInsets.all(8.0),
+          child: Column(
             spacing: 10.0,
             children: [
               ListView.builder(
@@ -28,37 +31,25 @@ class AddProductsBodyContent extends StatelessWidget {
               ),
             ],
           ),
-          Positioned(
-            bottom: 5,
-            left: 0,
-            right: 0,
-            child: Row(
-              spacing: 5.0,
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-              children: [
-                Flexible(
-                  child: CustomButton(
-                    text: AppStrings.addProduct,
-                    onPressed: () => editProductBottomSheet(context,true),
-                    color: AppColors.primaryColor,
-                    textColor: AppColors.whiteColor,
-                    paddingHorizontal: 30,
-                  ),
-                ),
-                Flexible(
-                  child: CustomButton(
-                    text: AppStrings.addCategory,
-                    onPressed: () => context.pushScreen(AddCategoryPage()),
-                    color: AppColors.primaryColor,
-                    textColor: AppColors.whiteColor,
-                    paddingHorizontal: 30,
-                  ),
-                ),
-              ],
-            ),
+        ),
+        Positioned(
+          bottom: 5,
+          left: 10,
+          right: 10,
+          child: Row(
+            spacing: 5.0,
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            children: [
+              Flexible(
+                child: ActionBtn(label: AppStrings.addProduct, icon: Icons.add_rounded, onTap: () => editProductBottomSheet(context, true)),
+              ),
+              Flexible(
+                child: ActionBtn(label: AppStrings.addCategory, icon: Icons.add_rounded, outlined: true, onTap: () => context.pushScreen(AddCategoryPage())),
+              ),
+            ],
           ),
-        ],
-      ),
+        ),
+      ],
     );
   }
 }

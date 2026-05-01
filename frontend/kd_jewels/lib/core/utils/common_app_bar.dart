@@ -7,8 +7,9 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 class CommonAppBar extends StatefulWidget {
   final String? pageName;
   final bool? isShowLogo;
+  final Color? textColor;
 
-  const CommonAppBar({super.key, required this.pageName, required this.isShowLogo,});
+  const CommonAppBar({super.key, required this.pageName, required this.isShowLogo, this.textColor,});
 
   @override
   State<CommonAppBar> createState() => _CommonAppBarState();
@@ -26,7 +27,7 @@ class _CommonAppBarState extends State<CommonAppBar> {
         onPressed: () {
           Navigator.pop(context);
         },
-        icon: Icon(Icons.arrow_back_ios_new_rounded, size: 20.sp, color: AppColors.primaryColor),
+        icon: Icon(Icons.arrow_back_ios_new_rounded, size: 20.sp, color: widget.textColor ?? AppColors.primaryColor),
       ),
       title: widget.isShowLogo == true
           ? Image.asset(
@@ -37,7 +38,7 @@ class _CommonAppBarState extends State<CommonAppBar> {
             )
           : Text(
               widget.pageName ?? '',
-              style: AppTextStyles.medium.copyWith(fontSize: 16.0.sp, color: AppColors.primaryColor),
+              style: AppTextStyles.medium.copyWith(fontSize: 16.0.sp, color: widget.textColor ?? AppColors.primaryColor),
             ),
     );
   }

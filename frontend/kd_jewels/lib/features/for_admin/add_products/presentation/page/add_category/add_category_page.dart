@@ -26,7 +26,7 @@ class _AddCategoryPageState extends State<AddCategoryPage> {
           extendBody: true,
           appBar: PreferredSize(
             preferredSize: Size.fromHeight(50.0),
-            child: CommonAppBar(pageName: AppStrings.addCategory, isShowLogo: false),
+            child: CommonAppBar(pageName: AppStrings.addCategory, isShowLogo: false,textColor: AppColors.black,),
           ),
           body: const AddCategoryBodyContent(),
         ),
