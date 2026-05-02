@@ -62,11 +62,13 @@ class _SignInPageState extends State<SignInPage> {
 Future<void> navigateToNextPage(BuildContext context, LoginSuccessState state) async {
   if (state.signInModel.success == true) {
     if (state.signInModel.user?.role == "admin") {
-      await SecurePreferenceManager.saveData(AppStrings.authToken, state.signInModel.token);
+      await SecurePreferenceManager.saveData(AppStrings.authToken, state.signInModel.accessToken);
+      await SecurePreferenceManager.saveData(AppStrings.refreshToken, state.signInModel.refreshToken);
       context.showSuccessSnackbar(state.signInModel.message ?? AppStrings.loginSuccessfullyMassage);
       context.pushAndRemoveAll(AdminDashboardPage());
     } else {
-      await SecurePreferenceManager.saveData(AppStrings.authToken, state.signInModel.token);
+      await SecurePreferenceManager.saveData(AppStrings.authToken, state.signInModel.accessToken);
+      await SecurePreferenceManager.saveData(AppStrings.refreshToken, state.signInModel.refreshToken);
       context.showSuccessSnackbar(state.signInModel.message ?? AppStrings.loginSuccessfullyMassage);
       context.pushAndRemoveAll(DashboardPage());
     }

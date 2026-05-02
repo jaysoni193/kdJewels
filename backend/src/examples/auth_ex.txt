@@ -18,12 +18,40 @@ POST http://localhost:3000/api/auth/login
 }
 ############  Response  ############
 {
-  "success": true,
-  "token": "eyJhbGciOiJIUzI1NiIs...",
-  "user": {
-    "_id": "...",
-    "name": "Jay",
-    "email": "jay@gmail.com",
-    "role": "admin"
-  }
+    "success": true,
+    "message": "Login successfully.",
+    "accessToken": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY5Y2Y1MTAxNmMxYTQzOTdjNTMyNWFmNCIsInJvbGUiOiJhZG1pbiIsImlhdCI6MTc3NzcxNzk0NCwiZXhwIjoxNzc3NzE3OTc0fQ.EohoCfn7SV_PC05WPPRlyns2UVT9UMBfVRl0LUInbLE",
+    "refreshToken": "b23bb5f2547a6a04d78758ab3dc2f1facc092e0d06466e0d66fabbced559e41c7de827f5a98359766a2a375d2c9a876efbed359b2397cfb4f9f537d2c043823b",
+    "user": {
+        "_id": "69cf51016c1a4397c5325af4",
+        "name": "Admin",
+        "email": "admin@gmail.com",
+        "role": "admin",
+        "createdAt": "2026-04-03T05:32:49.255Z",
+        "updatedAt": "2026-04-03T05:32:49.255Z",
+        "__v": 0
+    }
+}
+
+//Refresh token
+POST http://localhost:3000/api/auth/refreshToken
+############  Request  ############
+{ "refreshToken": "" }
+############  Response  ############
+
+{
+    "success": true,
+    "message": "Tokens refreshed successfully",
+    "accessToken": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY5Y2Y1MTAxNmMxYTQzOTdjNTMyNWFmNCIsInJvbGUiOiJhZG1pbiIsImlhdCI6MTc3NzcxNTYzMSwiZXhwIjoxNzc3NzE2NTMxfQ.xfmemnQ1WnyV5ILHnlul5clO8vrmiStCziOZ5YL6KL0",
+    "refreshToken": "15217e941282e92e5043541737b13fbcde8a96f87550b0e2f773a919ea2e076bd88e3c740b5b1eb5620d2fc6682228de7e91bf89edf5943c512f96719f0a6ced"
+}
+
+//Logout
+POST http://localhost:3000/api/auth/logout
+############  Request  ############
+{ "refreshToken": "" }
+############  Response  ############
+{
+    "success": true,
+    "message": "Logged out successfully"
 }

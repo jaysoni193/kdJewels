@@ -1,15 +1,22 @@
 class SignInModel {
   bool? success;
   String? message;
-  String? token;
+  String? accessToken;
+  String? refreshToken;
   User? user;
 
-  SignInModel({this.success, this.message, this.token, this.user});
+  SignInModel(
+      {this.success,
+        this.message,
+        this.accessToken,
+        this.refreshToken,
+        this.user});
 
   SignInModel.fromJson(Map<String, dynamic> json) {
     success = json['success'];
     message = json['message'];
-    token = json['token'];
+    accessToken = json['accessToken'];
+    refreshToken = json['refreshToken'];
     user = json['user'] != null ? new User.fromJson(json['user']) : null;
   }
 
@@ -17,7 +24,8 @@ class SignInModel {
     final Map<String, dynamic> data = new Map<String, dynamic>();
     data['success'] = this.success;
     data['message'] = this.message;
-    data['token'] = this.token;
+    data['accessToken'] = this.accessToken;
+    data['refreshToken'] = this.refreshToken;
     if (this.user != null) {
       data['user'] = this.user!.toJson();
     }
@@ -29,7 +37,6 @@ class User {
   String? sId;
   String? name;
   String? email;
-  String? password;
   String? role;
   String? createdAt;
   String? updatedAt;
@@ -39,7 +46,6 @@ class User {
       {this.sId,
         this.name,
         this.email,
-        this.password,
         this.role,
         this.createdAt,
         this.updatedAt,
@@ -49,7 +55,6 @@ class User {
     sId = json['_id'];
     name = json['name'];
     email = json['email'];
-    password = json['password'];
     role = json['role'];
     createdAt = json['createdAt'];
     updatedAt = json['updatedAt'];
@@ -61,7 +66,6 @@ class User {
     data['_id'] = this.sId;
     data['name'] = this.name;
     data['email'] = this.email;
-    data['password'] = this.password;
     data['role'] = this.role;
     data['createdAt'] = this.createdAt;
     data['updatedAt'] = this.updatedAt;

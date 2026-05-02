@@ -12,6 +12,7 @@ import '../utils/secure_preference_manager.dart';
 import 'api_helpers.dart';
 
 class AppDio with DioMixin implements Dio {
+  // ─── Network check ────────────────────────────────────────────────────────
   Future<bool> hasNetwork() async {
     try {
       final result = await InternetAddress.lookup('google.com');
@@ -21,6 +22,7 @@ class AppDio with DioMixin implements Dio {
     }
   }
 
+  // ─── Token getters ────────────────────────────────────────────────────────
   Future<String> getAuthToken() async {
     return await SecurePreferenceManager.getData(AppStrings.authToken);
   }
@@ -29,10 +31,65 @@ class AppDio with DioMixin implements Dio {
     return await SecurePreferenceManager.getData(AppStrings.refreshToken);
   }
 
+  // ─── Refresh token API call ───────────────────────────────────────────────
+  // Matches your Node.js API:
+  //   POST /api/auth/refresh
+  //   Body  : { "refreshToken": "<token>" }
+  //   Response: { "success": true, "accessToken": "...", "refreshToken": "..." }
   Future<void> callRefreshToken() async {
-    // Call refresh token API
+    try {
+      final storedRefreshToken = await getRefreshToken();
+
+      if (storedRefreshToken.isEmpty) {
+        throw Exception('No refresh token stored — user must log in again');
+      }
+
+      // Use a plain Dio instance (not AppDio) to avoid interceptor loop
+      final plainDio = Dio(BaseOptions(
+        baseUrl: ApiHelpers.baseUrl,
+        contentType: 'application/json',
+        connectTimeout: const Duration(minutes: 1),
+        receiveTimeout: const Duration(minutes: 1),
+      ));
+
+      final response = await plainDio.post(
+        ApiHelpers.refreshToken, // e.g. '/api/auth/refresh'
+        data: {'refreshToken': storedRefreshToken},
+      );
+
+      if (response.statusCode == 200 && response.data['success'] == true) {
+        final newAccessToken  = response.data['accessToken']  as String;
+        final newRefreshToken = response.data['refreshToken'] as String;
+
+        // Persist both rotated tokens
+        await SecurePreferenceManager.saveData(AppStrings.authToken,    newAccessToken);
+        await SecurePreferenceManager.saveData(AppStrings.refreshToken, newRefreshToken);
+
+        log('Tokens refreshed successfully');
+      } else {
+        throw Exception('Refresh token response invalid: ${response.data}');
+      }
+    } catch (e) {
+      log('callRefreshToken failed: $e');
+      rethrow; // Let onError handler catch this and reject
+    }
   }
 
+  // ─── Session clear (call on logout or refresh failure) ───────────────────
+  Future<void> _clearSessionAndRedirectToLogin() async {
+    await SecurePreferenceManager.saveData(AppStrings.authToken,    '');
+    await SecurePreferenceManager.saveData(AppStrings.refreshToken, '');
+
+    final context = navigatorKey.currentContext;
+    if (context != null) {
+      WidgetsBinding.instance.addPostFrameCallback((_) {
+        // Replace with your login route
+        Navigator.of(context).pushNamedAndRemoveUntil('/login', (route) => false);
+      });
+    }
+  }
+
+  // ─── Constructor ──────────────────────────────────────────────────────────
   AppDio._([BaseOptions? options]) {
     options = BaseOptions(
       baseUrl: ApiHelpers.baseUrl,
@@ -43,70 +100,94 @@ class AppDio with DioMixin implements Dio {
     );
 
     this.options = options;
+
     interceptors.add(
       InterceptorsWrapper(
+        // ── Request interceptor ──────────────────────────────────────────
         onRequest: (options, handler) async {
+          // 1. Check internet
           final isConnected = await hasNetwork();
           if (!isConnected) {
-            // Reject the request to prevent Dio from hanging
-            handler.reject(DioException(requestOptions: options, error: 'No internet connection', type: DioExceptionType.unknown));
-            // Navigate to NoInternetWidget
+            handler.reject(DioException(
+              requestOptions: options,
+              error: 'No internet connection',
+              type: DioExceptionType.unknown,
+            ));
             final context = navigatorKey.currentContext;
             if (context != null) {
               WidgetsBinding.instance.addPostFrameCallback((_) {
-                Navigator.of(context).push(MaterialPageRoute(builder: (_) => NoInternetWidget(isOffline: true)));
+                Navigator.of(context).push(
+                  MaterialPageRoute(builder: (_) => NoInternetWidget(isOffline: true)),
+                );
               });
             }
             return;
           }
 
-          if (options.path.contains(ApiHelpers.signIn)) {
+          // 2. Skip auth header for public routes
+          final isPublicRoute = options.path.contains(ApiHelpers.signIn) ||
+              options.path.contains(ApiHelpers.signIn) ||
+              options.path.contains(ApiHelpers.refreshToken);
+
+          if (isPublicRoute) {
             return handler.next(options);
           }
-          String? token = await getAuthToken(); // async OK here
 
-          if (token.isNotEmpty && (!options.path.contains(ApiHelpers.refreshToken))) {
-            options.headers["Authorization"] = "Bearer $token";
+          // 3. Attach access token to all other requests
+          final token = await getAuthToken();
+          if (token.isNotEmpty) {
+            options.headers['Authorization'] = 'Bearer $token';
           }
-          // Optional: Log FormData fields
+
+          // 4. Debug log for FormData
           if (options.data is FormData && kDebugMode) {
             log((options.data as FormData).fields.toString());
           }
+
           handler.next(options);
         },
+
+        // ── Error interceptor ────────────────────────────────────────────
         onError: (DioException e, handler) async {
+          // Don't retry if it's already a refresh token call
           if (e.requestOptions.path.contains(ApiHelpers.refreshToken)) {
+            log('Refresh token call failed — clearing session');
+            await _clearSessionAndRedirectToLogin();
             return handler.reject(e);
           }
 
-          // 2️⃣ Stop if request already retried
-          if (e.requestOptions.extra["retry"] == true) {
-            print("⛔ Already retried — stopping loop");
+          // Don't retry if request already retried once (prevents infinite loop)
+          if (e.requestOptions.extra['retry'] == true) {
+            log('Already retried once — rejecting');
+            await _clearSessionAndRedirectToLogin();
             return handler.reject(e);
           }
 
+          // Handle 401 Unauthorized — access token expired
           if (e.response?.statusCode == 401) {
+            log('401 received — attempting token refresh');
             try {
-              final refreshToken = await getRefreshToken();
-              final response = await post(ApiHelpers.refreshToken, data: {'RefreshToken': refreshToken});
-              final newAccessToken = response.data['authorization'];
-              final newRefreshToken = response.data['refreshToken'];
+              // Refresh both tokens
+              await callRefreshToken();
 
-              // Save new tokens
-              await SecurePreferenceManager.saveData(AppStrings.authToken, newAccessToken);
+              // Get the newly saved access token
+              final newToken = await getAuthToken();
 
-              await SecurePreferenceManager.saveData(AppStrings.refreshToken, newRefreshToken);
-              String? token = await getAuthToken();
-              final options = e.requestOptions;
-              options.extra["retry"] = true;
-              options.headers['Authorization'] = 'Bearer $token';
+              // Clone the original failed request with new token + retry flag
+              final retryOptions = e.requestOptions;
+              retryOptions.extra['retry'] = true;
+              retryOptions.headers['Authorization'] = 'Bearer $newToken';
 
-              final cloneReq = await fetch(options);
-              return handler.resolve(cloneReq);
-            } catch (er) {
+              // Retry the original request
+              final retryResponse = await fetch(retryOptions);
+              return handler.resolve(retryResponse);
+            } catch (refreshError) {
+              log('Token refresh failed: $refreshError — clearing session');
+              await _clearSessionAndRedirectToLogin();
               return handler.reject(e);
             }
           }
+
           return handler.next(e);
         },
       ),
