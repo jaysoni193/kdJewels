@@ -5,7 +5,7 @@ import '../../../../../admin_dashboard/presentation/page/widgets/subtle_backgrou
 import '../../add_category/add_category_page.dart';
 import '../../../../../../../core/constants/app_colors.dart';
 import '../../../../../../../core/constants/app_strings.dart';
-import '../../../../../../../core/utils/custom_button.dart';
+import '../../../../../../../core/utils/custom_view/custom_button.dart';
 import 'edit_product_bottom_sheet.dart';
 import 'product_list.dart';
 

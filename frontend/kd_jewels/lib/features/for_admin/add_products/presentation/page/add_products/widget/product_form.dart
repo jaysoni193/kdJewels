@@ -2,9 +2,9 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/services.dart';
 import '../../../../../../../core/constants/app_strings.dart';
 import '../../../../../../../core/utils/app_utils.dart';
-import '../../../../../../../core/utils/custom_drop_down.dart';
-import '../../../../../../../core/utils/custom_image_picker.dart';
-import '../../../../../../../core/utils/custom_text_form_field.dart';
+import '../../../../../../../core/utils/custom_view/custom_drop_down.dart';
+import '../../../../../../../core/utils/custom_view/custom_image_picker.dart';
+import '../../../../../../../core/utils/custom_view/custom_text_form_field.dart';
 
 class ProductForm extends StatelessWidget {
   const ProductForm({super.key});

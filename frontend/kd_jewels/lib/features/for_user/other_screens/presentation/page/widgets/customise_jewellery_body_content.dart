@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import '../../../../../../core/constants/app_colors.dart';
 import '../../../../../../core/utils/app_utils.dart';
-import '../../../../../../core/utils/custom_button.dart';
+import '../../../../../../core/utils/custom_view/custom_button.dart';
 import '../../../../../../core/constants/app_strings.dart';
-import '../../../../../../core/utils/custom_drop_down.dart';
+import '../../../../../../core/utils/custom_view/custom_drop_down.dart';
 import '../../../../../../core/extensions/widget_size_extension.dart';
 
 enum ColorLabel { green, red, blue }
@@ -62,7 +62,7 @@ Widget customiseJewelleryBodyContent(BuildContext context) {
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               CustomButton(
-                text: AppStrings.submit,
+                text: AppStrings.btnSubmit,
                 onPressed: () {},
                 color: AppColors.primaryColor,
                 textColor: AppColors.whiteColor,

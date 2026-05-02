@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:kd_jewels/core/utils/common_app_status_bar.dart';
+import 'package:kd_jewels/core/utils/custom_view/common_app_status_bar.dart';
 import '../../../../../../core/constants/app_assets.dart';
 import '../../../../../../core/constants/app_colors.dart';
 import '../../../../../../core/constants/app_strings.dart';
-import '../../../../../../core/utils/common_app_bar.dart';
-import '../../../../../../core/utils/custom_button.dart';
+import '../../../../../../core/utils/custom_view/common_app_bar.dart';
+import '../../../../../../core/utils/custom_view/custom_button.dart';
 import '../product_details_widgets/product_details_body_content.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 

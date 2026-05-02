@@ -7,7 +7,7 @@ exports.register = async (req, res) => {
 
     res.status(201).json({
       success: true,
-      message: "User registered successfully",
+      message: "User registered successfully.",
       data: user,
     });
   } catch (error) {
@@ -25,7 +25,7 @@ exports.login = async (req, res) => {
 
     res.status(200).json({
       success: true,
-      message: "Login successful",
+      message: "Login successfully.",
       token: result.token,
       user: result.user,
     });

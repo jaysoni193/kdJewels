@@ -4,7 +4,7 @@ import 'common_header_widget.dart';
 import '../../../../../../core/extensions/widget_size_extension.dart';
 import '../../../../../../core/constants/app_colors.dart';
 import '../../../../../../core/utils/app_utils.dart';
-import '../../../../../../core/utils/custom_divider.dart';
+import '../../../../../../core/utils/custom_view/custom_divider.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class ThreeCardWidget extends StatefulWidget {

@@ -4,7 +4,7 @@ import '../../../../../../../core/constants/app_colors.dart';
 import '../../../../../../../core/constants/app_strings.dart';
 import '../../../../../../../core/constants/app_text_styles.dart';
 import '../../../../../../../core/utils/app_utils.dart';
-import '../../../../../../../core/utils/custom_container.dart';
+import '../../../../../../core/utils/custom_view/custom_container.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 Widget grossWeightWidget(

@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:kd_jewels/core/constants/app_assets.dart';
 import '../../../../../../core/extensions/navigation_extension.dart';
 import '../../../../../../core/extensions/widget_size_extension.dart';
-import '../../../../../../core/utils/common_expansion_tile.dart';
+import '../../../../../../core/utils/custom_view/common_expansion_tile.dart';
 import '../../../../../../core/constants/app_colors.dart';
 import '../../../../../../core/constants/app_strings.dart';
 import '../../../../../../core/constants/app_text_styles.dart';

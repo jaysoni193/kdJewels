@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:kd_jewels/core/constants/app_colors.dart';
 import '../../../../../../core/constants/app_strings.dart';
-import '../../../../../../core/utils/common_app_bar.dart';
+import '../../../../../../core/utils/custom_view/common_app_bar.dart';
 import '../widgets/customise_jewellery_body_content.dart';
 
 class CustomiseJewelleryPage extends StatefulWidget {

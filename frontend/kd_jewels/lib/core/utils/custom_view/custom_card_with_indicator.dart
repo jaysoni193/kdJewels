@@ -1,7 +1,7 @@
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
-import '../constants/app_colors.dart';
-import '../extensions/widget_size_extension.dart';
+import '../../constants/app_colors.dart';
+import '../../extensions/widget_size_extension.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class CustomCardWithIndicator extends StatefulWidget {

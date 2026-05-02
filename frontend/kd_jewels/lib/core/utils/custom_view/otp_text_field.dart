@@ -1,8 +1,8 @@
 import 'dart:async';
 import 'package:flutter/material.dart';
-import '../../../../../core/constants/app_text_styles.dart';
+import '../../../../../../core/constants/app_text_styles.dart';
 import 'package:pin_code_fields/pin_code_fields.dart';
-import '../constants/app_colors.dart';
+import '../../constants/app_colors.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class OtpTextField extends StatefulWidget {

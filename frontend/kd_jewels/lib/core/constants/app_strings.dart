@@ -1,5 +1,8 @@
 class AppStrings {
   static const String kdJewels = "kdJewels";
+  ///Store in SecureStorage
+  static String authToken = "authToken";
+  static String refreshToken = "refreshToken";
 
   ///Admin
   static const String admin = "Admin";
@@ -20,21 +23,24 @@ class AppStrings {
   ///Massage
   static const String noDataFound = "No Data Found";
   static const String noInternet = "No Internet";
+  static const String somethingWentWrongMassage = "Something went wrong try later.";
   static const String deleteAccountString = "Do you want to Delete Account ?";
   static const String logoutText = "Are you sure you want to logout ?";
+  static const String loginSuccessfullyMassage = "Login successfully.";
+
+  ///Validation
+  static const String validationPassword = "Please Enter Password";
   ///Buttons
-  static const String skip = "Skip";
-  static const String next = "Next";
-  static const String cancel = "Cancel";
-  static const String okay = "Okay";
-  static const String yes = "Yes";
-  static const String no = "No";
-  static const String getStarted = "Get Started";
-  static const String signUP = "SIGN UP";
-  static const String signIn = "SIGN IN";
-  static const String resendOtp = "Resend OTP";
-  static const String getOtp = "GET OTP";
-  static const String submit = "Submit";
+  static const String btnSkip = "Skip";
+  static const String btnNext = "Next";
+  static const String btnCancel = "Cancel";
+  static const String btnOkay = "Okay";
+  static const String btnYes = "Yes";
+  static const String btnNo = "No";
+  static const String btnSignUP = "SIGN UP";
+  static const String btnSignIn = "SIGN IN";
+  static const String btnGetStarted = "Get Started";
+  static const String btnSubmit = "Submit";
   static const String check = "Check";
   static const String addToCart = "Add To Cart";
   static const String myCart = "My Cart";

@@ -4,7 +4,7 @@ import '../../../../../../core/constants/app_assets.dart';
 import '../../../../../../core/extensions/navigation_extension.dart';
 import '../../../../other_screens/presentation/page/other_screens/wishlist_page.dart';
 import '../../../../../../core/constants/app_colors.dart';
-import '../../../../../../core/utils/custom_circle_icon_button.dart';
+import '../../../../../../core/utils/custom_view/custom_circle_icon_button.dart';
 import '../../../../other_screens/presentation/page/other_screens/add_to_cart_page.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:kd_jewels/features/for_admin/add_products/presentation/page/add_category/widgets/add_category_body_content.dart';
-import '../../../../../../core/utils/common_app_status_bar.dart';
-import '../../../../../../core/utils/common_app_bar.dart';
+import '../../../../../../core/utils/custom_view/common_app_status_bar.dart';
+import '../../../../../../core/utils/custom_view/common_app_bar.dart';
 import '../../../../../../core/constants/app_colors.dart';
 import '../../../../../../core/constants/app_strings.dart';
 import '../add_products/widget/add_products_body_content.dart';

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:kd_jewels/core/utils/common_app_status_bar.dart';
+import 'package:kd_jewels/core/utils/custom_view/common_app_status_bar.dart';
 import '../../../data/model/latest_product_model.dart';
 import '../home_widgets/home_page_body_content.dart';
 import '../../../data/model/img_text_model.dart';

@@ -3,7 +3,7 @@ import '../../../../../../../../core/constants/app_text_styles.dart';
 import '../../../../../../../../core/extensions/widget_size_extension.dart';
 import '../../../../../../../../core/utils/app_utils.dart';
 import '../../../../../../../../core/constants/app_strings.dart';
-import '../../../../../../../../core/utils/custom_text_form_field.dart';
+import '../../../../../../../core/utils/custom_view/custom_text_form_field.dart';
 
 class WriteReviewSubWidget extends StatefulWidget {
   const WriteReviewSubWidget({super.key});

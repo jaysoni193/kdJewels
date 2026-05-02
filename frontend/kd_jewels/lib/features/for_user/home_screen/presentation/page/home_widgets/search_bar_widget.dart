@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:kd_jewels/core/utils/app_utils.dart';
-import '../../../../../../core/utils/custom_search_bar.dart';
+import '../../../../../../core/utils/custom_view/custom_search_bar.dart';
 
 class SearchBarWidget extends StatelessWidget {
   const SearchBarWidget({super.key});

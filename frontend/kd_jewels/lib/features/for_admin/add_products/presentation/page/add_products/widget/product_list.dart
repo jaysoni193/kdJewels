@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:kd_jewels/core/extensions/widget_size_extension.dart';
-import 'package:kd_jewels/core/utils/custom_dialog_box.dart';
+import 'package:kd_jewels/core/utils/custom_view/custom_dialog_box.dart';
 import '../../../../../../../core/constants/app_colors.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 

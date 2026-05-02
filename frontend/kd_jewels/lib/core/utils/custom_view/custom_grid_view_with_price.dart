@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:kd_jewels/core/utils/app_utils.dart';
-import '../../../../../core/extensions/widget_size_extension.dart';
-import '../../../../../core/constants/app_colors.dart';
-import '../../../../../core/constants/app_text_styles.dart';
-import '../../features/for_user/home_screen/presentation/page/home_widgets/common_header_widget.dart';
+import '../../../../../../core/extensions/widget_size_extension.dart';
+import '../../../../../../core/constants/app_colors.dart';
+import '../../../../../../core/constants/app_text_styles.dart';
+import '../../../features/for_user/home_screen/presentation/page/home_widgets/common_header_widget.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class CustomGridViewWithPrice extends StatefulWidget {

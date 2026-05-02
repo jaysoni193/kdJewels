@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import '../../../../login_register_screen/presentation/page/login_register/sign_in_page.dart';
 import '../../../../../../core/extensions/navigation_extension.dart';
 import '../../../../../../core/constants/app_strings.dart';
-import '../../../../../../core/utils/custom_button.dart';
+import '../../../../../../core/utils/custom_view/custom_button.dart';
 import '../../../../../../core/constants/app_colors.dart';
 import '../../../../../../core/constants/app_text_styles.dart';
 import 'top_convex_clipper.dart';
@@ -67,7 +67,7 @@ class OnboardingPageView extends StatelessWidget {
                 children: [
                   ///getStarted
                   CustomButton(
-                    text: AppStrings.getStarted,
+                    text: AppStrings.btnGetStarted,
                     onPressed: () {
                       openLoginScreen(context);
                     },
@@ -85,7 +85,7 @@ class OnboardingPageView extends StatelessWidget {
                 children: [
                   ///Skip
                   CustomButton(
-                    text: AppStrings.skip,
+                    text: AppStrings.btnSkip,
                     onPressed: () {
                       openLoginScreen(context);
                     },
@@ -99,7 +99,7 @@ class OnboardingPageView extends StatelessWidget {
 
                   ///Next
                   CustomButton(
-                    text: AppStrings.next,
+                    text: AppStrings.btnNext,
                     onPressed: () {
                       onPressed(currentScreenNo + 1);
                     },

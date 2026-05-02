@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import '../../../../../../../core/constants/app_colors.dart';
 import '../../../../../../../core/constants/app_strings.dart';
 import '../../../../../../../core/constants/app_text_styles.dart';
-import '../../../../../../../core/utils/common_bottom_sheet.dart';
-import '../../../../../../../core/utils/custom_button.dart';
+import '../../../../../../../core/utils/custom_view/common_bottom_sheet.dart';
+import '../../../../../../../core/utils/custom_view/custom_button.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import '../../../../../admin_dashboard/presentation/page/widgets/action_button_widget.dart';
 import 'product_form.dart';
@@ -26,7 +26,7 @@ editProductBottomSheet(BuildContext context,bool isFromAdd) {
       crossAxisAlignment: CrossAxisAlignment.center,
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            CustomButton(text: AppStrings.submit, onPressed: () {}, color: AppColors.black, textColor: AppColors.whiteColor,),
+            CustomButton(text: AppStrings.btnSubmit, onPressed: () {}, color: AppColors.black, textColor: AppColors.whiteColor,),
           ],
         ),
   )/*.whenComplete(() {

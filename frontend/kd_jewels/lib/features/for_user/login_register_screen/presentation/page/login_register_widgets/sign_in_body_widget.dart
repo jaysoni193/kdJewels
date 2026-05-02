@@ -2,18 +2,18 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import '../../../../../../core/constants/app_assets.dart';
-import '../../../../../../core/utils/custom_divider.dart';
+import '../../../../../../core/utils/custom_view/custom_divider.dart';
 import '../../bloc/login_register_bloc/login_register_bloc.dart';
 import '../../../../../../core/extensions/navigation_extension.dart';
 import '../../../../../../core/extensions/widget_size_extension.dart';
 import '../login_register/register_page.dart';
 import '../../../../../../core/constants/app_text_styles.dart';
-import '../../../../../../core/utils/email_validator.dart';
+import '../../../../../../core/utils/validator/email_validator.dart';
 import '../../../../../../core/constants/app_colors.dart';
 import '../../../../../../core/utils/app_utils.dart';
-import '../../../../../../core/utils/custom_button.dart';
+import '../../../../../../core/utils/custom_view/custom_button.dart';
 import '../../../../../../core/constants/app_strings.dart';
-import '../../../../../../core/utils/custom_text_form_field.dart';
+import '../../../../../../core/utils/custom_view/custom_text_form_field.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class SignInBodyWidget extends StatelessWidget {
@@ -60,7 +60,10 @@ class SignInBodyWidget extends StatelessWidget {
                       keyboardType: TextInputType.text,
                       controller: loginRegisterBloc!.password,
                       validator: (value) {
-                        //   //Todo (Validation for Mobile no)
+                        if (value?.isEmpty == true) {
+                          AppStrings.validationPassword;
+                        }
+                        return null;
                       },
                     ),
                     10.0.hSpace,
@@ -68,7 +71,7 @@ class SignInBodyWidget extends StatelessWidget {
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
                         CustomButton(
-                          text: AppStrings.signIn,
+                          text: AppStrings.btnSignIn,
                           onPressed: () {
                             if (loginRegisterBloc!.loginFormKey.currentState!.validate()) {
                               loginRegisterBloc!.add(LogInEvent(loginRegisterBloc!.email.text, loginRegisterBloc!.password.text));
@@ -87,7 +90,7 @@ class SignInBodyWidget extends StatelessWidget {
                       isShowImage: false,
                       isShowButtonText: true,
                       text: AppStrings.signUpText,
-                      buttonText: AppStrings.signUP,
+                      buttonText: AppStrings.btnSignUP,
                       onPressed: () {
                         context.pushScreen(RegisterPage());
                       },
@@ -120,7 +123,7 @@ Widget signUpButton(BuildContext context) {
     isShowImage: false,
     isShowButtonText: true,
     text: AppStrings.signUpText,
-    buttonText: AppStrings.signUP,
+    buttonText: AppStrings.btnSignUP,
     onPressed: () {
       context.pushScreen(RegisterPage());
     },

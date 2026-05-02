@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import '../../../../../../../core/extensions/widget_size_extension.dart';
 import '../../../../../../../core/constants/app_colors.dart';
 import '../../../../../../../core/constants/app_text_styles.dart';
-import '../../../../../../../core/utils/header_text_widget.dart';
+import '../../../../../../../core/utils/custom_view/header_text_widget.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class RelatedProductWidget extends StatefulWidget {

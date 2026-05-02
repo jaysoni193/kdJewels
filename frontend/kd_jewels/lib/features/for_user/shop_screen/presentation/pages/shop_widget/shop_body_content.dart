@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import '../../../../../../core/extensions/widget_size_extension.dart';
 import '../../../../../../core/constants/app_strings.dart';
-import '../../../../../../core/utils/custom_grid_view.dart';
-import '../../../../../../core/utils/horizontal_list_view.dart';
-import '../../../../../../core/utils/custom_card.dart';
+import '../../../../../../core/utils/custom_view/custom_grid_view.dart';
+import '../../../../../../core/utils/custom_view/horizontal_list_view.dart';
+import '../../../../../../core/utils/custom_view/custom_card.dart';
 import '../../../../home_screen/data/model/img_text_model.dart';
 import '../../../../home_screen/data/model/latest_product_model.dart';
 

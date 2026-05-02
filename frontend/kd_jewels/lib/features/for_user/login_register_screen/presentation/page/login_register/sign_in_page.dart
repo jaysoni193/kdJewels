@@ -1,6 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:kd_jewels/core/extensions/snackbar_extension.dart';
+import '../../../../../../core/constants/app_strings.dart';
+import '../../../../../../core/extensions/navigation_extension.dart';
+import '../../../../../../core/extensions/snackbar_extension.dart';
+import '../../../../../for_admin/admin_dashboard/presentation/page/admin_dashboard/admin_dashboard_page.dart';
+import '../../../../dashboard/presentation/page/dashboard/dashboard_page.dart';
 import '../../../../../../core/constants/app_loader.dart';
+import '../../../../../../core/utils/secure_preference_manager.dart';
 import '../../bloc/login_register_bloc/login_register_bloc.dart';
 import '../login_register_widgets/sign_in_body_widget.dart';
 import '../login_register_widgets/sign_in_app_bar_widget.dart';
@@ -42,7 +47,7 @@ class _SignInPageState extends State<SignInPage> {
               }
             }
             if (state is LoginSuccessState) {
-              context.showSuccessSnackbar("Success");
+              navigateToNextPage(context, state);
             }
           },
           builder: (context, state) {
@@ -51,5 +56,21 @@ class _SignInPageState extends State<SignInPage> {
         ),
       ),
     );
+  }
+}
+
+Future<void> navigateToNextPage(BuildContext context, LoginSuccessState state) async {
+  if (state.signInModel.success == true) {
+    if (state.signInModel.user?.role == "admin") {
+      await SecurePreferenceManager.saveData(AppStrings.authToken, state.signInModel.token);
+      context.showSuccessSnackbar(state.signInModel.message ?? AppStrings.loginSuccessfullyMassage);
+      context.pushAndRemoveAll(AdminDashboardPage());
+    } else {
+      await SecurePreferenceManager.saveData(AppStrings.authToken, state.signInModel.token);
+      context.showSuccessSnackbar(state.signInModel.message ?? AppStrings.loginSuccessfullyMassage);
+      context.pushAndRemoveAll(DashboardPage());
+    }
+  } else {
+    context.showErrorSnackbar(state.signInModel.message ?? AppStrings.somethingWentWrongMassage);
   }
 }

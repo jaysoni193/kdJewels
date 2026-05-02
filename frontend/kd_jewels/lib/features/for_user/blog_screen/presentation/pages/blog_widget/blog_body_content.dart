@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:kd_jewels/core/extensions/widget_size_extension.dart';
 import '../../../../../../core/constants/app_strings.dart';
-import '../../../../../../core/utils/custom_card.dart';
+import '../../../../../../core/utils/custom_view/custom_card.dart';
 import '../../../../home_screen/data/model/latest_product_model.dart';
 import '../../../data/model/care_tips_model.dart';
 import 'care_and_tips_widget.dart';

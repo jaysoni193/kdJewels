@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import '../constants/app_colors.dart';
-import '../constants/app_text_styles.dart';
-import 'app_utils.dart';
+import '../../constants/app_colors.dart';
+import '../../constants/app_text_styles.dart';
+import '../app_utils.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 Widget headerLabel(String? headerText) {

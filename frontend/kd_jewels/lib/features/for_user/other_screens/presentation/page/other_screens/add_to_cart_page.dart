@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import '../../../../../../core/constants/app_colors.dart';
 import '../../../../../../core/constants/app_strings.dart';
-import '../../../../../../core/utils/common_app_bar.dart';
-import '../../../../../../core/utils/common_app_status_bar.dart';
+import '../../../../../../core/utils/custom_view/common_app_bar.dart';
+import '../../../../../../core/utils/custom_view/common_app_status_bar.dart';
 import '../../../../collection_screen/data/model/collection_data_model.dart';
 import '../widgets/add_to_cart_body_widget.dart';
 

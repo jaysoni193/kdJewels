@@ -1,12 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
-import '../../../../../../../core/constants/app_text_styles.dart';
-import '../../../../../../../core/utils/app_utils.dart';
+import 'package:kd_jewels/core/utils/custom_view/custom_dialog_box.dart';
 import '../../../../../admin_dashboard/presentation/page/widgets/subtle_background.dart';
 import '../../../../../../../core/constants/app_colors.dart';
 import '../../../../../../../core/constants/app_strings.dart';
-import '../../../../../../../core/utils/custom_button.dart';
-import '../../../../../../../core/utils/custom_text_form_field.dart';
+import '../../../../../../../core/utils/custom_view/custom_button.dart';
 import 'add_update_category.dart';
 import 'category_list.dart';
 
@@ -39,7 +36,7 @@ class AddCategoryBodyContent extends StatelessWidget {
           right: 20,
           child: CustomButton(
             text: AppStrings.addCategory,
-            onPressed: () => AppUtils().showCustomDialog(
+            onPressed: () => CustomDialogBox.showCustomDialogWithChild(
               context: context,
               height: 200.0,
               child: addUpdateCategory(isFromUpdate: false),

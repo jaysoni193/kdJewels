@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import '../../../../../../../core/constants/app_text_styles.dart';
-import '../../../../../../../core/utils/custom_dialog_box.dart';
+import '../../../../../../../core/utils/custom_view/custom_dialog_box.dart';
 import '../../../../../../../core/constants/app_colors.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+
+import 'add_update_category.dart';
 
 class CategoryList extends StatelessWidget {
   const CategoryList({super.key});
@@ -23,7 +25,7 @@ class CategoryList extends StatelessWidget {
           // Product Details
           Column(
             crossAxisAlignment: CrossAxisAlignment.start,
-            children:  [
+            children: [
               Padding(
                 padding: const EdgeInsets.only(left: 30.0),
                 child: Text('Test', style: AppTextStyles.semiBold.copyWith(fontSize: 16.0.sp)),
@@ -36,11 +38,11 @@ class CategoryList extends StatelessWidget {
             children: [
               IconButton(
                 icon: Icon(Icons.edit, color: AppColors.black, size: 20.0.sp),
-                onPressed: () {},
+                onPressed: () => CustomDialogBox.showCustomDialogWithChild(context: context, height: 200.0, child: addUpdateCategory(isFromUpdate: true)),
               ),
               IconButton(
                 icon: Icon(Icons.delete, color: AppColors.red, size: 20.0.sp),
-                onPressed: () => CustomDialogBox.showDeleteAccountDialog(context,okBtn: () {},cancelBtn: () {},),
+                onPressed: () => CustomDialogBox.showDeleteAccountDialog(context, okBtn: () {}, cancelBtn: () {}),
               ),
             ],
           ),
@@ -49,4 +51,3 @@ class CategoryList extends StatelessWidget {
     );
   }
 }
-

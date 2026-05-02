@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import '../extensions/navigation_extension.dart';
+import '../../extensions/navigation_extension.dart';
 import 'package:sizer/sizer.dart';
-import '../../../../core/constants/app_colors.dart';
-import '../constants/app_text_styles.dart';
+import '../../../../../core/constants/app_colors.dart';
+import '../../constants/app_text_styles.dart';
 
 Widget iconWidgets(String image, VoidCallback onTap) {
   return InkWell(

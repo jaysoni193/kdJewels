@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import '../extensions/widget_size_extension.dart';
+import '../../extensions/widget_size_extension.dart';
 import 'header_text_widget.dart';
-import '../constants/app_colors.dart';
-import '../constants/app_text_styles.dart';
+import '../../constants/app_colors.dart';
+import '../../constants/app_text_styles.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class HorizontalListView extends StatefulWidget {

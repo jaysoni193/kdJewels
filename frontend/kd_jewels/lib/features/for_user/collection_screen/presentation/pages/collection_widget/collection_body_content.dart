@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:kd_jewels/core/constants/app_strings.dart';
-import 'package:kd_jewels/core/utils/custom_search_bar.dart';
+import 'package:kd_jewels/core/utils/custom_view/custom_search_bar.dart';
 import '../../../../../../core/extensions/navigation_extension.dart';
-import '../../../../../../core/utils/custom_grid_view_with_price.dart';
+import '../../../../../../core/utils/custom_view/custom_grid_view_with_price.dart';
 import '../../../../../../core/extensions/widget_size_extension.dart';
 import '../../../../../../core/utils/app_utils.dart';
 import '../../../../other_screens/presentation/page/other_screens/customise_jewellery_page.dart';

@@ -1,8 +1,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import '../extensions/widget_size_extension.dart';
-import '../constants/app_colors.dart';
-import '../constants/app_text_styles.dart';
+import '../../extensions/widget_size_extension.dart';
+import '../../constants/app_colors.dart';
+import '../../constants/app_text_styles.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class CustomDivider extends StatelessWidget {
