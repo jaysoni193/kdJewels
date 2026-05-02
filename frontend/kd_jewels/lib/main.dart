@@ -1,8 +1,8 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_easyloading/flutter_easyloading.dart';
-import 'package:kd_jewels/features/for_admin/admin_dashboard/presentation/page/admin_dashboard/admin_dashboard_page.dart';
 import 'features/for_user/login_register_screen/presentation/bloc/login_register_bloc/login_register_bloc.dart';
 import 'features/splash_screen/presentation/bloc/app_loader_bloc.dart';
 import 'features/splash_screen/presentation/page/splash/splash_page.dart';
@@ -14,19 +14,24 @@ import 'core/constants/app_strings.dart';
 import 'core/constants/app_theme.dart';
 import 'di/injector.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:device_preview/device_preview.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await DependencyInjection().init();
   runApp(
-    ScreenUtilInit(
-      designSize: const Size(375, 812),
-      minTextAdapt: true,
-      splitScreenMode: true,
-      builder: (_, child) {
-        return const MyApp();
-      },
-    ),
+      DevicePreview(
+        enabled: !kReleaseMode,
+        builder: (context) =>  ScreenUtilInit(
+          designSize: const Size(375, 812),
+          minTextAdapt: true,
+          splitScreenMode: true,
+          builder: (_, child) {
+            return const MyApp();
+          },
+        ),
+      ),
+
   );
   configLoading();
 }
@@ -46,7 +51,7 @@ class _MyAppState extends State<MyApp> {
     SystemChrome.setSystemUIOverlayStyle(
       SystemUiOverlayStyle(
         statusBarColor: AppColors.primaryColor,
-        statusBarIconBrightness: Brightness.light,
+        statusBarIconBrightness: Brightness.dark,
         statusBarBrightness: Brightness.light,
       ),
     );
@@ -76,7 +81,7 @@ class _MyAppState extends State<MyApp> {
           return MaterialApp(
             title: AppStrings.kdJewels,
             theme: AppTheme.lightTheme,
-            home: AdminDashboardPage(),
+            home: SplashPage(),
             builder: EasyLoading.init(),
             debugShowCheckedModeBanner: false,
           );

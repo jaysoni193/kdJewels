@@ -49,6 +49,8 @@ dev_dependencies:
 
   flutter_secure_storage: ^10.0.0
 
+  device_preview: ^1.2.0
+
   # DI
   get_it: ^8.0.2
 

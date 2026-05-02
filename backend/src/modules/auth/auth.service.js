@@ -2,9 +2,10 @@ const User = require('./auth.model');
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
 
+const SALT_ROUNDS = parseInt(process.env.BCRYPT_ROUNDS) || 12;
 // REGISTER
 exports.registerUser = async (data) => {
-  const { name, email, password, role } = data;
+  const { name, email, password,  } = data;
 
   // check existing user
   const existingUser = await User.findOne({ email });
@@ -13,7 +14,7 @@ exports.registerUser = async (data) => {
   }
 
   // hash password
-  const hashedPassword = await bcrypt.hash(password, 10);
+  const hashedPassword = await bcrypt.hash(password, SALT_ROUNDS);
 
   // create user
   const user = await User.create({
@@ -23,7 +24,9 @@ exports.registerUser = async (data) => {
     role: 'user',
   });
 
-  return user;
+  // FIX (Critical #1): Strip password hash before returning — never expose it to client
+  const { password: _, ...safeUser } = user.toObject();
+  return safeUser;
 };
 
 // LOGIN
@@ -47,6 +50,7 @@ exports.loginUser = async (data) => {
     process.env.JWT_SECRET,
     { expiresIn: '7d' }
   );
-
-  return { user, token };
+  // FIX (Critical #1): Strip password from user object before returning
+  const { password: _, ...safeUser } = user.toObject();
+  return { user: safeUser, token };
 };
