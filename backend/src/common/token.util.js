@@ -2,14 +2,14 @@ const jwt = require('jsonwebtoken');
 const crypto = require('crypto');
 const RefreshToken = require('../modules/auth/refreshToken_model');
 
-// const ACCESS_TOKEN_EXPIRY = '15m';   // Short-lived access token
-// const REFRESH_TOKEN_EXPIRY = '30d';   // Long-lived refresh token
-// const REFRESH_TOKEN_EXPIRY_MS = 30 * 24 * 60 * 60 * 1000; // 30 days in ms
+const ACCESS_TOKEN_EXPIRY = '15m';   // Short-lived access token
+const REFRESH_TOKEN_EXPIRY = '30d';   // Long-lived refresh token
+const REFRESH_TOKEN_EXPIRY_MS = 30 * 24 * 60 * 60 * 1000; // 30 days in ms
 
 // TESTING
-const ACCESS_TOKEN_EXPIRY = '30s';
-const REFRESH_TOKEN_EXPIRY = '2m';
-const REFRESH_TOKEN_EXPIRY_MS = 2 * 60 * 1000;
+// const ACCESS_TOKEN_EXPIRY = '30s';
+// const REFRESH_TOKEN_EXPIRY = '2m';
+// const REFRESH_TOKEN_EXPIRY_MS = 2 * 60 * 1000;
 
 // Generate short-lived JWT access token
 exports.generateAccessToken = (user) => {

@@ -64,11 +64,17 @@ Future<void> navigateToNextPage(BuildContext context, LoginSuccessState state) a
     if (state.signInModel.user?.role == "admin") {
       await SecurePreferenceManager.saveData(AppStrings.authToken, state.signInModel.accessToken);
       await SecurePreferenceManager.saveData(AppStrings.refreshToken, state.signInModel.refreshToken);
+      await SecurePreferenceManager.saveData(AppStrings.storeUserName, state.signInModel.user?.name);
+      await SecurePreferenceManager.saveData(AppStrings.storeEmailId, state.signInModel.user?.email);
+      await SecurePreferenceManager.saveData(AppStrings.role, state.signInModel.user?.role);
       context.showSuccessSnackbar(state.signInModel.message ?? AppStrings.loginSuccessfullyMassage);
       context.pushAndRemoveAll(AdminDashboardPage());
     } else {
       await SecurePreferenceManager.saveData(AppStrings.authToken, state.signInModel.accessToken);
       await SecurePreferenceManager.saveData(AppStrings.refreshToken, state.signInModel.refreshToken);
+      await SecurePreferenceManager.saveData(AppStrings.storeUserName, state.signInModel.user?.name);
+      await SecurePreferenceManager.saveData(AppStrings.storeEmailId, state.signInModel.user?.email);
+      await SecurePreferenceManager.saveData(AppStrings.role, state.signInModel.user?.role);
       context.showSuccessSnackbar(state.signInModel.message ?? AppStrings.loginSuccessfullyMassage);
       context.pushAndRemoveAll(DashboardPage());
     }

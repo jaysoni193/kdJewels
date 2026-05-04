@@ -7,6 +7,13 @@ const categorySchema = new mongoose.Schema({
     required: true,
   },
 
+  // 🏷️ Gender section — which homepage tab this belongs to
+  section: {
+    type: String,
+    enum: ['men', 'women', 'kids'],
+    required: true,
+  },
+
   // 🌳 Parent Category (null = root)
   parent: {
     type: mongoose.Schema.Types.ObjectId,
@@ -22,8 +29,11 @@ const categorySchema = new mongoose.Schema({
   isDeleted: {
     type: Boolean,
     default: false,
-  }
+  },
 
 }, { timestamps: true });
+
+// Index for fast section-based queries
+categorySchema.index({ section: 1, isDeleted: 1, isActive: 1 });
 
 module.exports = mongoose.model('Category', categorySchema);

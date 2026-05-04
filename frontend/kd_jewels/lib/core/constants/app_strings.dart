@@ -1,8 +1,12 @@
 class AppStrings {
   static const String kdJewels = "kdJewels";
+
   ///Store in SecureStorage
   static String authToken = "authToken";
   static String refreshToken = "refreshToken";
+  static String storeUserName = "userName";
+  static String storeEmailId = "emailId";
+  static String role = "role";
 
   ///Admin
   static const String admin = "Admin";
@@ -30,6 +34,7 @@ class AppStrings {
 
   ///Validation
   static const String validationPassword = "Please Enter Password";
+
   ///Buttons
   static const String btnSkip = "Skip";
   static const String btnNext = "Next";
